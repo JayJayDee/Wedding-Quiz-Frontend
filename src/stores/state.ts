@@ -1,4 +1,4 @@
 
-export class WeddStates {
-  public memberToken: string | null = null;
+export interface WeddRootState {
+  memberToken: string | null;
 }

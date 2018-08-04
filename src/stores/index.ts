@@ -1,18 +1,17 @@
 
 import Vue from 'vue';
-import Vuex from 'vuex';
-import { WeddStates } from '@/stores/state';
-import { WeddMutations } from '@/stores/mutation';
-import { WeddActions } from '@/stores/actions';
+import Vuex, { StoreOptions } from 'vuex';
+import { WeddRootState } from '@/stores/state';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
-  modules: {
-    app: {
-      state: WeddStates,
-      mutations: WeddMutations,
-      actions: WeddActions
-    }
+const store: StoreOptions<WeddRootState> = {
+  state: {
+    memberToken: null
   },
-});
+  modules: {
+
+  }
+};
+
+export default new Vuex.Store<WeddRootState>(store);

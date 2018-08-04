@@ -8,6 +8,19 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
+  name: 'root',
+
+  mounted: function() {
+    console.log('mounted!');
+  }
+});
+
+</script>
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
