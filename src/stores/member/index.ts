@@ -1,6 +1,6 @@
 import { MemberState, WeddRootState } from '@/stores';
-import { Module, ActionTree } from 'vuex';
-import { ApiMgr, ResMemberCreate } from '@/apis';
+import { Module, ActionTree, MutationTree } from 'vuex';
+import { ApiMgr, ResMemberCreate, ResMemberGet } from '@/apis';
 
 const memberState: MemberState = {
   name: null,
@@ -8,12 +8,13 @@ const memberState: MemberState = {
 };
 
 const memberActions: ActionTree<MemberState, WeddRootState> = {
-  async initialize({ commit }) {
-    let memberToken: string | null = localStorage.getItem('wedd-member-token');
-    if (!memberToken) {
-      //TODO: commit to initial page  
-      return;
-    } 
+  
+};
+
+const memberMutations: MutationTree<MemberState> = {
+  memberLoaded(state: MemberState, payload: MemberState) {
+    state.name = payload.name;
+    state.phone = payload.phone;
   }
 };
 

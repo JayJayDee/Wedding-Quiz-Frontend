@@ -26,6 +26,11 @@ const store: StoreOptions<WeddRootState> = {
   state: {
     member_token: null
   },
+  actions: {
+    initialize() {
+      
+    }
+  },
   modules: {
     member: memberModule,
     play: playModule

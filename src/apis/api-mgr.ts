@@ -19,18 +19,21 @@ export const ApiMgr = {
   },
 
   async requestGetMember(memberToken: string): Promise<ResMemberGet> {
-    //TODO: request via axios 
+    let rawResp: any = await axios({
+      method: 'get',
+      url: `${baseUrl}/member/${memberToken}`
+    });
     let resMemberGet: ResMemberGet = {
       member: {
-        name: 'test', 
-        phone: 'test',
+        name: rawResp.member.name, 
+        phone: rawResp.member.phone,
       },
       play: {
-        num_all_quiz: 0,
-        num_correct: 0,
-        num_incorrect: 0,
-        num_played: 0,
-        is_ended: false
+        num_all_quiz: rawResp.play.num_all_quiz,
+        num_correct: rawResp.play.num_correct,
+        num_incorrect: rawResp.play.num_incorrect,
+        num_played: rawResp.play.num_played,
+        is_ended: rawResp.play.is_ended
       }
     };
     return resMemberGet;
