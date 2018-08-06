@@ -1,18 +1,17 @@
 
 import Vue from 'vue';
-import Vuex, { StoreOptions } from 'vuex';
-
-import { memberModule } from './member';
-import { playModule } from './play';
+import Vuex, { StoreOptions, MutationTree } from 'vuex';
 
 Vue.use(Vuex);
 
 export interface WeddRootState {
   member_token: string | null;
+  member: MemberState | null;
+  play: PlayState | null;
 }
 export interface MemberState {
-  name: string | null;
-  phone: string | null;
+  name: string;
+  phone: string;
 }
 export interface PlayState {
   num_all_quiz: number;
@@ -22,18 +21,23 @@ export interface PlayState {
   is_ended: boolean;
 }
 
+const mutations: MutationTree<MemberState> = {
+
+}
+
 const store: StoreOptions<WeddRootState> = {
   state: {
-    member_token: null
+    member_token: null,
+    member: null,
+    play: null
   },
   actions: {
     initialize() {
       
     }
   },
-  modules: {
-    member: memberModule,
-    play: playModule
+  mutations: {
+
   }
 };
 
