@@ -1,10 +1,11 @@
 
 import Vue from 'vue';
-import Vuex, { StoreOptions, MutationTree } from 'vuex';
+import Vuex, { StoreOptions, MutationTree, ActionTree } from 'vuex';
+import * as vuextypex from 'vuex-typex';
 
 Vue.use(Vuex);
 
-export interface WeddRootState {
+export interface RootState {
   member_token: string | null;
   member: MemberState | null;
   play: PlayState | null;
@@ -21,24 +22,18 @@ export interface PlayState {
   is_ended: boolean;
 }
 
-const mutations: MutationTree<MemberState> = {
+const builder = vuextypex.getStoreBuilder<RootState>();
 
+const root = {
+  
+  getMember: builder.dispatch(async (context: vuextypex.BareActionContext<RootState, RootState>) => {
+    
+  }),
+
+  updateMemberToken: builder.commit((state: RootState, memberToken: string) => {
+    state.member_token = memberToken;
+  })
 }
 
-const store: StoreOptions<WeddRootState> = {
-  state: {
-    member_token: null,
-    member: null,
-    play: null
-  },
-  actions: {
-    initialize() {
-      
-    }
-  },
-  mutations: {
-
-  }
-};
-
-export default new Vuex.Store<WeddRootState>(store);
+const store = builder.vuexStore();
+export default store;
