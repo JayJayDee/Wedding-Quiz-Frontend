@@ -1,7 +1,8 @@
 
 import Vue from 'vue';
-import Vuex, { StoreOptions, MutationTree, ActionTree } from 'vuex';
-import * as vuextypex from 'vuex-typex';
+import Vuex, { StoreOptions, MutationTree, ActionTree, ActionContext } from 'vuex';
+
+import { getStoreBuilder, BareActionContext } from 'vuex-typex';
 
 Vue.use(Vuex);
 
@@ -22,17 +23,19 @@ export interface PlayState {
   is_ended: boolean;
 }
 
-const builder = vuextypex.getStoreBuilder<RootState>();
+const builder = getStoreBuilder<RootState>();
 
-const root = {
-  
-  getMember: builder.dispatch(async (context: vuextypex.BareActionContext<RootState, RootState>) => {
-    
-  }),
+async function fetchMemberFromApi(context: BareActionContext<RootState, RootState>) {
 
-  updateMemberToken: builder.commit((state: RootState, memberToken: string) => {
-    state.member_token = memberToken;
-  })
+}
+
+function updateMemberToken(state: RootState, memberToken: string) {
+  state.member_token = memberToken;
+}
+
+export const rootHandler = {
+  fetchMemberFromApi: builder.dispatch(fetchMemberFromApi),
+  updateMemberToken: builder.commit(updateMemberToken)
 }
 
 const store = builder.vuexStore();
