@@ -8,6 +8,30 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { State } from 'vuex-class';
+
+@Component
+export default class App extends Vue {
+  @State('member_token') memberToken: string | null;
+
+  constructor() {
+    super();
+  }
+
+  public mounted() {
+    console.log('mounted!');
+    console.log(this.memberToken);
+  }
+
+  public computed() {
+    
+  }
+}
+</script>
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
