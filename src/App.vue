@@ -14,25 +14,11 @@
 import Vue from 'vue';
 import { mapState, mapActions } from 'vuex';
 
-export default Vue.extend({
-  name: 'root',
-
-  mounted() {
-    this.initialize();
-  },
-
-  methods: {
-    ...mapActions(['initialize'])
-  },
-
-  computed: {
-
-  },
-  ...mapState([
-    'memberToken'
-  ])
-});
-
+export default class App extends Vue {
+  public mounted() {
+    console.log('!!!!!');
+  }
+}
 </script>
 
 <style>

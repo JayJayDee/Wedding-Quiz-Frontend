@@ -1,7 +1,6 @@
-import { MemberState, PlayState } from '@/stores';
 
+import { Member, Play } from '@/types';
 export { ApiMgr } from './api-mgr';
-
 
 export interface ReqMemberCreate {
   phone: string;
@@ -12,6 +11,6 @@ export interface ResMemberCreate {
 }
 
 export interface ResMemberGet {
-  member: MemberState;
-  play: PlayState;
+  member: Member;
+  play: Play;
 }
