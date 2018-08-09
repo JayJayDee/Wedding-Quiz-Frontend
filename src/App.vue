@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <loading></loading>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -11,11 +12,20 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { State } from 'vuex-class';
+import Loading from './views/Loading.vue';
 
-@Component
+import { State, Action } from 'vuex-class';
+
+@Component({
+  name: 'App',
+  components: {
+    Loading
+  }
+})
 export default class App extends Vue {
   @State('member_token') memberToken: string | null;
+  @State('is_loading') isLoading: boolean;
+  @Action('authorize') authorize: () => Promise<any>;
 
   constructor() {
     super();
@@ -23,7 +33,7 @@ export default class App extends Vue {
 
   public mounted() {
     console.log('mounted!');
-    console.log(this.memberToken);
+    this.authorize();
   }
 
   public computed() {
