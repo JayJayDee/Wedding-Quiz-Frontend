@@ -21,6 +21,11 @@ const rootState: RootState = {
 const rootActions = {
   async authorize(store: ActionContext<RootState, any>) {
     store.commit('updateLoading', true);
+
+    let memberToken: string | null = localStorage.getItem('wedd-quiz-token');
+    if (!memberToken) {
+      
+    }
     
     console.log('authorize!');
     store.commit('memberToken', '123');

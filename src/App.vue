@@ -3,7 +3,8 @@
     <loading :is-loading="isLoading"></loading>
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/quiz">Quiz</router-link>
     </div>
     <router-view/>
   </div>
