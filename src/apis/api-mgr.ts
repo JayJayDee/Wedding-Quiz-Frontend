@@ -5,7 +5,7 @@ import { ReqMemberGet, ReqMemberCreate, ResMemberGet } from "@/apis";
 
 const baseUrl = 'http://dev-api.chatpot.chat';
 
-const ApiManager = {
+export const ApiManager = {
 
   async requestGetMember(req: ReqMemberGet): Promise<ResMemberGet> {
     let rawResp: any = await axios({

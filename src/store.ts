@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex, { ActionContext } from 'vuex'
 import { Member, Play } from '@/types';
+import { ApiManager } from '@/apis/api-mgr';
+import { ResMemberGet } from '@/apis';
 
 Vue.use(Vuex)
 
@@ -24,11 +26,19 @@ const rootActions = {
 
     let memberToken: string | null = localStorage.getItem('wedd-quiz-token');
     if (!memberToken) {
-      
+      store.commit('updateLoading', false);
+      return;
     }
-    
-    console.log('authorize!');
-    store.commit('memberToken', '123');
+
+    ApiManager.requestGetMember({
+      member_token: memberToken
+    })
+    .then(function(resp: ResMemberGet) {
+
+    })
+    .catch(function(err: Error) {
+
+    });
   }
 };
 

@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <h1>QUIZ-Entry</h1>
+    
   </div>
 </template>
 

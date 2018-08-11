@@ -43,7 +43,7 @@ export default class App extends Vue {
   public mounted() {
     console.log('mounted!');
     this.authorize()
-    .then(() => {
+    .then(function(resp) {
       
     })
     .catch((err: Error) => {
