@@ -1,13 +1,15 @@
 <template>
-  <div id="app">
+  <v-app>
+    <v-navigation-drawer app></v-navigation-drawer>
+    <v-toolbar app></v-toolbar>
     <loading :is-loading="isLoading"></loading>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/quiz">Quiz</router-link>
-    </div>
-    <router-view/>
-  </div>
+    <v-content>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-content>
+    <v-footer app></v-footer>
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -44,6 +46,9 @@ export default class App extends Vue {
     .then(() => {
       
     })
+    .catch((err: Error) => {
+
+    });
   }
 
   public computed() {

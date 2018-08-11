@@ -1,8 +1,13 @@
 
 <template>
-  <div id="popup-loading" v-if="isLoading">
-    LOADING
-  </div>
+  <v-dialog 
+    v-model="isLoading" 
+    persistent>
+    <v-progress-circular
+      indeterminate
+      color="white">
+    </v-progress-circular>
+  </v-dialog>
 </template>
 
 <script lang="ts">
@@ -16,17 +21,8 @@ import Component from 'vue-class-component';
 })
 export default class Loading extends Vue {
 
+  public mounted() {
+    console.log('loading-mounted!');
+  }
 }
 </script>
-
-<style>
-#popup-loading {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0px;
-  top: 0px;
-  background-color: 000000;
-  z-index: 999;
-}
-</style>
