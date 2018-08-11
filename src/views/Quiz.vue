@@ -8,6 +8,8 @@
       v-on:onSubmit="onMemberInfoInputedFromEntryVue" />
 
     <!-- 가입한 적이 있는 경우 -->
+    <quiz-play
+      v-if="memberJoined" />
   </v-container>
 </template>
 
@@ -22,7 +24,7 @@ import Component from 'vue-class-component';
 
 @Component({
   components: {
-    QuizEntry
+    QuizEntry, QuizPlay
   }
 })
 export default class Quiz extends Vue {
