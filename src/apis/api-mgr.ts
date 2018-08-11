@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-import { ReqMemberGet, ReqMemberCreate, ResMemberGet } from "@/apis";
+import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate } from "@/apis";
 
 const baseUrl = 'http://dev-api.chatpot.chat';
 
@@ -29,7 +29,16 @@ export const ApiManager = {
     return resp;
   }, 
 
-  async requestCreateMember(req: ReqMemberCreate) {
+  async requestCreateMember(req: ReqMemberCreate): Promise<ResMemberCreate> {
+    let rawResp: any = await axios({
+      url: `${baseUrl}/member`,
+      method: 'post',
+      data: req
+    });
 
+    let resp: ResMemberCreate = {
+      member_token: rawResp.member_token
+    };
+    return resp;
   }
 };

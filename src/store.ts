@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex, { ActionContext } from 'vuex'
 import { Member, Play } from '@/types';
 import { ApiManager } from '@/apis/api-mgr';
-import { ResMemberGet } from '@/apis';
+import { ResMemberGet, ReqMemberCreate, ResMemberCreate } from '@/apis';
 
 Vue.use(Vuex)
 
@@ -39,6 +39,13 @@ const rootActions = {
     .catch(function(err: Error) {
 
     });
+  },
+
+  async createMember(store: ActionContext<RootState, any>, member: Member) {
+    store.commit('updateLoading', true);
+
+    let resp: ResMemberCreate = await ApiManager.requestCreateMember(member);
+    store.commit('updateLoading', false);
   }
 };
 
