@@ -1,7 +1,11 @@
 <template>
   <v-app>
     <v-navigation-drawer app></v-navigation-drawer>
-    <v-toolbar app></v-toolbar>
+    <v-toolbar 
+      color="primary"
+      app>
+      <v-toolbar-title class="white--text">Ho-ong-App</v-toolbar-title>
+    </v-toolbar>
     <loading :is-loading="isLoading"></loading>
     <v-content>
       <v-container fluid>
