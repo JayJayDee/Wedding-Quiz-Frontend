@@ -4,13 +4,11 @@
     <v-toolbar 
       color="primary"
       app>
-      <v-toolbar-title class="white--text">Ho-ong-App</v-toolbar-title>
+      <v-toolbar-title class="white--text">Seul&Dong's Wedding</v-toolbar-title>
     </v-toolbar>
     <loading :is-loading="isLoading"></loading>
     <v-content>
-      <v-container fluid>
-        <router-view></router-view>
-      </v-container>
+      <router-view></router-view>
     </v-content>
     <v-footer app></v-footer>
   </v-app>
@@ -48,10 +46,10 @@ export default class App extends Vue {
     console.log('mounted!');
     this.authorize()
     .then(function(resp) {
-      
+      console.log('initialize completed!');
     })
     .catch((err: Error) => {
-
+      console.log('something error happended!');
     });
   }
 
