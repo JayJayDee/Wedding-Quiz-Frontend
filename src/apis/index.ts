@@ -16,3 +16,16 @@ export interface ReqMemberCreate {
 export interface ResMemberCreate {
   member_token: string;
 }
+
+export class ApiRequestError extends Error {
+  private msg: string;
+
+  constructor(msg: string) {
+    super(msg);
+    this.msg = msg;
+  }
+
+  public toString() {
+    return this.msg;
+  }
+}

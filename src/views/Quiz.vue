@@ -39,6 +39,7 @@ export default class Quiz extends Vue {
   }
 
   private get memberJoined(): boolean {
+    if (this.memberToken) return true;
     return false;
   }
 
