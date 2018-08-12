@@ -1,7 +1,10 @@
 
 <template>
-  <v-btn class="choice-btn">
-    {{ btnContent }} 
+  <v-btn 
+    class="choice-btn" 
+    block="true"
+    @click="onChoiceClicked">
+    <p>{{ btnContent }}</p>
   </v-btn>
 </template>
 
@@ -11,8 +14,8 @@ import { Component } from 'vue-property-decorator';
 
 @Component({
   props: {
-    choice_no: Number,
-    content: String
+    content: String,
+    choice_no: Number
   }
 })
 export default class QuizChoiceBtn extends Vue {
@@ -25,11 +28,15 @@ export default class QuizChoiceBtn extends Vue {
     return this.content;
   }
 
+  private onChoiceClicked() {
+    alert(this.choice_no);
+  }
 }
 </script>
 
 <style scoped>
 .choice-btn {
+  margin-top: 10px;
   padding: 10px;
   font-size: 12pt;
 }

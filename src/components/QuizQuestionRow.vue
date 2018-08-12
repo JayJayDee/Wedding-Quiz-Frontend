@@ -1,8 +1,6 @@
 
 <template>
-  <v-card>
-    {{ innerContent }}
-  </v-card>
+  <p class="text-sm-left">{{ innerContent }}</p>
 </template>
 
 <script lang="ts">

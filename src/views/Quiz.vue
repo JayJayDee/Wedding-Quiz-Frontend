@@ -1,15 +1,16 @@
 
 <template>
-  <v-container grid-list-md>
+  <v-container>
+    <v-layout grid-list-md>
+      <!-- 이전에 가입 한 적이 없는 경우 -->
+      <quiz-entry 
+        v-if="!memberJoined && isLoaded === true"
+        v-on:onSubmit="onMemberInfoInputedFromEntryVue" />
 
-    <!-- 이전에 가입 한 적이 없는 경우 -->
-    <quiz-entry 
-      v-if="memberJoined === false"
-      v-on:onSubmit="onMemberInfoInputedFromEntryVue" />
-
-    <!-- 가입한 적이 있는 경우 -->
-    <quiz-play
-      v-if="memberJoined === true" />
+      <!-- 가입한 적이 있는 경우 -->
+      <quiz-play
+        v-if="memberJoined && isLoaded === true" />
+    </v-layout>
   </v-container>
 </template>
 
@@ -38,6 +39,13 @@ export default class Quiz extends Vue {
 
   constructor() {
     super();
+  }
+
+  private get isLoaded(): boolean {
+    if (this.memberToken === undefined) {
+      return false;
+    }
+    return true;
   }
 
   private get memberJoined(): boolean {
