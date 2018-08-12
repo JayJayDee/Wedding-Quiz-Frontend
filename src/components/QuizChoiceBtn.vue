@@ -1,21 +1,13 @@
 
 <template>
-  <v-btn>
-  </v-btn>  
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Component } from 'vue-property-decorator';
 
-@Component({
-  props: {
-    choice_no: Number,
-    content: String
-  }
-})
+@Component
 export default class QuizChoiceBtn extends Vue {
-  
-}
 
+}
 </script>
