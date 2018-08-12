@@ -1,7 +1,9 @@
 
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
+import * as _ from 'lodash';
 
-import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError } from "@/apis";
+import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz } from "@/apis";
+import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember } from '@/apis/converters';
 
 const baseUrl = 'http://dev-api.chatpot.chat';
 
@@ -14,17 +16,8 @@ export const ApiManager = {
     });
     
     let resp: ResMemberGet = {
-      member: {
-        name: rawResp.member.name,
-        phone: rawResp.member.phone
-      },
-      play: {
-        is_ended: rawResp.play.is_ended,
-        num_all_quiz: rawResp.play.num_all_quiz,
-        num_correct: rawResp.play.num_correct,
-        num_incorrect: rawResp.play.num_incorrect,
-        num_played: rawResp.play.num_played 
-      }
+      member: cvtToMember(rawResp.member),
+      play: cvtToPlay(rawResp.play)
     };
     return resp;
   }, 
@@ -37,6 +30,23 @@ export const ApiManager = {
     });
     let resp: ResMemberCreate = {
       member_token: rawResp.member_token
+    };
+    return resp;
+  },
+
+  async requestGetQuiz(req: ReqGetQuiz): Promise<ResGetQuiz> {
+    let rawResp: any = await this.requestViaAxios({
+      url: `${baseUrl}/member/${req.member_token}/quiz`,
+      method: 'get'
+    });
+
+    let resp: ResGetQuiz = {
+      quiz: {
+        difficulty: rawResp.quiz.difficulty,
+        questions: _.map(rawResp.quiz.questions, cvtToQuizQuestion),
+        choices: _.map(rawResp.quiz.choices, cvtToQuizChoice),
+      },
+      play: cvtToPlay(rawResp.play)
     };
     return resp;
   },
@@ -56,5 +66,5 @@ export const ApiManager = {
       }
       throw new ApiRequestError('서버 요청 전달에 에러가 발생하였습니다.');
     }
-  }
+  },
 };

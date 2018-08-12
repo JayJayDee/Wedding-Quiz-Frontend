@@ -9,6 +9,7 @@
   "typings": "src/index.d.ts",
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash": "^4.17.10",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
@@ -18,6 +19,7 @@
     "vuex-class": "^0.3.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.116",
     "@vue/cli-plugin-babel": "^3.0.0-rc.11",
     "@vue/cli-plugin-typescript": "^3.0.0-rc.11",
     "@vue/cli-service": "^3.0.0-rc.11",

@@ -48,5 +48,16 @@ export const rootActions = {
       store.commit('loadingStatus', false);
       store.commit('error', err.toString());      
     }
-  }
+  },
+
+  async refreshQuiz(store: ActionContext<RootState, any>, memberToken: string) {
+    store.commit('loadingStatus', true);
+    try {
+
+      store.commit('loadingStatus', false);
+    } catch (err) {
+      store.commit('error', err.toString());
+      store.commit('loadingStatus', false);
+    }
+  },
 };

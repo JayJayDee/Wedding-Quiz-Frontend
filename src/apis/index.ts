@@ -1,4 +1,5 @@
 import { Member, Play } from '@/types';
+import { Quiz } from '@/types/common';
 
 
 export interface ReqMemberGet {
@@ -15,6 +16,14 @@ export interface ReqMemberCreate {
 }
 export interface ResMemberCreate {
   member_token: string;
+}
+
+export interface ReqGetQuiz {
+  member_token: string;
+}
+export interface ResGetQuiz {
+  quiz: Quiz;
+  play: Play;
 }
 
 export class ApiRequestError extends Error {
