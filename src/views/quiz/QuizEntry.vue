@@ -14,10 +14,12 @@
         <v-flex xs12>
           <v-form>
             <v-text-field
+              v-model="name"
               label="이름"
               required>
             </v-text-field>
             <v-text-field
+              v-model="phone"
               label="전화번호"
               required>
             </v-text-field>
@@ -32,16 +34,30 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Member } from '@/types';
+import { ToastOptions } from 'vue-easy-toast/types/toast';
 
 @Component
 export default class QuizEntry extends Vue {
+  // data
+  private name: string | null;
+  private phone: string | null;
+
+  constructor() {
+    super();
+    this.name = null;
+    this.phone = null;
+  }
   
   public onSubmit() {
+    if (!this.name || this.name.trim() === '') {
+      
+    }
+
     let newMember: Member = {
       name: '정진동',
       phone: '010-5460-2379'
     };
-    this.$emit('onSubmit', newMember);
+    //this.$emit('onSubmit', newMember);
   }
 }
 </script>

@@ -1,6 +1,9 @@
+
 import Vue from 'vue';
-import Vuetify from 'vuetify';
 import App from './App.vue';
+
+import Vuetify from 'vuetify';
+
 import router from './router';
 import store from './store';
 
