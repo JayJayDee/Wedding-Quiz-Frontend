@@ -20,6 +20,7 @@ export enum QuizQuestionType {
   TEXT = 'TEXT', IMAGE = 'IMAGE'
 }
 export interface QuizQuestion {
+  question_no: number;
   type: QuizQuestionType;
   content: string;
 }

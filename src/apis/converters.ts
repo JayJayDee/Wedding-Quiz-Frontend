@@ -16,6 +16,7 @@ export function cvtToQuizQuestion(raw: any): QuizQuestion {
   let type: QuizQuestionType = QuizQuestionType.TEXT;
   if (raw.type === 'IMAGE') type = QuizQuestionType.IMAGE;
   let q: QuizQuestion = {
+    question_no: raw.question_no,
     type: type,
     content: raw.content
   };

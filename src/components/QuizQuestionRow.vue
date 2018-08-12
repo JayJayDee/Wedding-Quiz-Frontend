@@ -1,10 +1,8 @@
 
 <template>
-  <v-flex class="row" xs12>
-    <v-card>
-      {{ innerContent }}
-    </v-card>
-  </v-flex>
+  <v-card>
+    {{ innerContent }}
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -13,6 +11,7 @@ import { Component } from 'vue-property-decorator';
 
 @Component({
   props: {
+    question_no: Number,
     type: String,
     content: String
   }
