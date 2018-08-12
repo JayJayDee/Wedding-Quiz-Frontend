@@ -34,7 +34,6 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Member } from '@/types';
-import { ToastOptions } from 'vue-easy-toast/types/toast';
 
 @Component
 export default class QuizEntry extends Vue {
@@ -50,14 +49,17 @@ export default class QuizEntry extends Vue {
   
   public onSubmit() {
     if (!this.name || this.name.trim() === '') {
-      
+      return alert('이름을 입력하세요');
+    }
+    if (!this.phone || this.phone.trim() === '') {
+      return alert('휴대폰번호를 입력하세요');
     }
 
     let newMember: Member = {
-      name: '정진동',
-      phone: '010-5460-2379'
+      name: this.name,
+      phone: this.phone
     };
-    //this.$emit('onSubmit', newMember);
+    this.$emit('onSubmit', newMember);
   }
 }
 </script>

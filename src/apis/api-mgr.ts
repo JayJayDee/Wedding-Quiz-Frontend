@@ -35,7 +35,6 @@ export const ApiManager = {
       method: 'post',
       data: req
     });
-    console.log(rawResp);
     let resp: ResMemberCreate = {
       member_token: rawResp.member_token
     };

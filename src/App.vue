@@ -52,10 +52,6 @@ export default class App extends Vue {
       console.log('something error happended!');
     });
   }
-
-  public computed() {
-    
-  }
 }
 </script>
 

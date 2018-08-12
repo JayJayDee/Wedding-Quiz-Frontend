@@ -3,9 +3,8 @@ import Vue from 'vue';
 import App from './App.vue';
 
 import Vuetify from 'vuetify';
-
 import router from './router';
-import store from './store';
+import store from './stores';
 
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import 'vuetify/dist/vuetify.min.css';

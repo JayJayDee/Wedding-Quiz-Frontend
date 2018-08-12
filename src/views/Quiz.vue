@@ -4,12 +4,12 @@
 
     <!-- 이전에 가입 한 적이 없는 경우 -->
     <quiz-entry 
-      v-if="!memberJoined"
+      v-if="memberJoined === false"
       v-on:onSubmit="onMemberInfoInputedFromEntryVue" />
 
     <!-- 가입한 적이 있는 경우 -->
     <quiz-play
-      v-if="memberJoined" />
+      v-if="memberJoined === true" />
   </v-container>
 </template>
 
