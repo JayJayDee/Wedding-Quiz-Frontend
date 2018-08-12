@@ -2,9 +2,8 @@
   <v-app>
     <v-navigation-drawer app></v-navigation-drawer>
     <v-toolbar 
-      color="primary"
-      app>
-      <v-toolbar-side-icon></v-toolbar-side-icon>
+      color="primary" app>
+      <v-toolbar-side-icon color="primary"></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">Seul&Dong's Wedding</v-toolbar-title>
     </v-toolbar>
     <loading :is-loading="isLoading"></loading>
