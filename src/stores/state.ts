@@ -5,5 +5,6 @@ export const rootState: RootState = {
   member: null,
   play: null,
   is_loading: true,
-  error: null
+  error: null,
+  current_quiz: null
 };

@@ -1,9 +1,10 @@
 
-import { ResMemberGet, ReqMemberCreate, ResMemberCreate } from '@/apis';
+import { ResMemberGet, ReqMemberCreate, ResMemberCreate, ResGetQuiz } from '@/apis';
 import { ActionContext } from '../../node_modules/vuex';
 import { RootState, TOKEN_KEY_NAME } from '@/stores';
 import { ApiManager } from '@/apis/api-mgr';
 import { Member } from '@/types';
+import { Quiz } from '@/types/common';
 
 export const rootActions = {
   async authorize(store: ActionContext<RootState, any>) {
@@ -50,10 +51,14 @@ export const rootActions = {
     }
   },
 
-  async refreshQuiz(store: ActionContext<RootState, any>, memberToken: string) {
+  async refreshQuizAndPlay(store: ActionContext<RootState, any>) {
     store.commit('loadingStatus', true);
     try {
-
+      let memberToken: string = store.state.member_token as string;
+      let resp: ResGetQuiz = await ApiManager.requestGetQuiz({
+        member_token: memberToken
+      });
+      store.commit('currentQuiz', resp.quiz);
       store.commit('loadingStatus', false);
     } catch (err) {
       store.commit('error', err.toString());
