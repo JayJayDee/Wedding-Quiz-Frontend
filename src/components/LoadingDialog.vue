@@ -19,7 +19,7 @@ import Component from 'vue-class-component';
     isLoading: Boolean
   }
 })
-export default class Loading extends Vue {
+export default class LoadingDialog extends Vue {
 
   public mounted() {
     console.log('loading-mounted!');

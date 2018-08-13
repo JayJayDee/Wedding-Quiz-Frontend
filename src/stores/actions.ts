@@ -59,6 +59,7 @@ export const rootActions = {
         member_token: memberToken
       });
       store.commit('currentQuiz', resp.quiz);
+      store.commit('memberPlay', resp.play);
       store.commit('loadingStatus', false);
     } catch (err) {
       store.commit('error', err.toString());

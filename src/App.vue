@@ -17,14 +17,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import Loading from './views/Loading.vue';
+import LoadingDialog from './components/LoadingDialog.vue';
 
 import { State, Action } from 'vuex-class';
 
 @Component({
   name: 'App',
   components: {
-    Loading
+    LoadingDialog
   }
 })
 export default class App extends Vue {

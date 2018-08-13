@@ -91,6 +91,7 @@ export default class QuizPlay extends Vue {
 
   private get currentPlayingTitle(): string {
     if (!this.currentPlay) return '';
+    console.log(this.currentPlay);
     let ordinalExpr: string = KorLexicalUtil.getOrdinalExpr(this.currentPlay.num_played + 1);
     return `${ordinalExpr} 퀴즈`;
   }
