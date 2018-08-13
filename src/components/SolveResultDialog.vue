@@ -1,8 +1,8 @@
 
 <template>
   <v-dialog 
-    class="transparent-dialog"
-    v-model="isLoading" 
+    class="transparent"
+    v-model="isShow" 
     persistent>
     <v-progress-circular
       indeterminate
@@ -17,12 +17,12 @@ import Component from 'vue-class-component';
 
 @Component({
   props: {
-    isLoading: Boolean
+    isShow: Boolean
   }
 })
-export default class LoadingDialog extends Vue {
+export default class SolveResultDialog extends Vue {
 
-  private isLoading: boolean;
+  private isShow: boolean;
 
   public mounted() {
     console.log('loading-mounted!');
@@ -30,9 +30,9 @@ export default class LoadingDialog extends Vue {
 }
 </script>
 
-<style scoped>
-.transparent-dialog {
-  -webkit-box-shadow: 0;
-  box-shadow: 0;
+<style lang="css" scoped>
+v-dialog.transparent {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 </style>

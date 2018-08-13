@@ -6,7 +6,7 @@
       <v-toolbar-side-icon color="primary"></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">Seul&Dong's Wedding</v-toolbar-title>
     </v-toolbar>
-    <loading :is-loading="isLoading"></loading>
+    <loading-dialog :is-loading="isLoading"></loading-dialog>
     <v-content>
       <router-view></router-view>
     </v-content>

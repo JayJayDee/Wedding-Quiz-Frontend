@@ -30,6 +30,8 @@
         </v-card-text>
       </v-card>
     </v-flex>
+
+    <solve-result-dialog :is-show="testDialogShow" />
   </v-layout>
 </template>
 
@@ -42,11 +44,13 @@ import { KorLexicalUtil } from '@/utils';
 import { Quiz, QuizQuestion, QuizChoice, Play } from '@/types/common';
 import QuizQuestionRow from '@/components/QuizQuestionRow.vue';
 import QuizChoiceBtn from '@/components/QuizChoiceBtn.vue';
+import SolveResultDialog from '@/components/SolveResultDialog.vue';
 
 @Component({
   components: {
     QuizQuestionRow,
-    QuizChoiceBtn
+    QuizChoiceBtn,
+    SolveResultDialog
   }
 })
 export default class QuizPlay extends Vue {
@@ -63,8 +67,11 @@ export default class QuizPlay extends Vue {
   @State('play')
   private currentPlay: Play;
 
+  private testDialogShow: boolean;
+
   constructor() {
     super();
+    this.testDialogShow = false;
   }
 
   public mounted() {
@@ -98,13 +105,18 @@ export default class QuizPlay extends Vue {
 
   public onChoose(choiceNo: number) {
     let self = this;
-    this.solveQuiz(choiceNo)
-    .then(() => {
-      return self.refreshQuizAndPlay();
-    })
-    .then(() => {
-      console.log('solve completed');
-    });
+    this.testDialogShow = true;
+
+    console.log('test!');
+
+
+    // this.solveQuiz(choiceNo)
+    // .then(() => {
+    //   return self.refreshQuizAndPlay();
+    // })
+    // .then(() => {
+    //   console.log('solve completed');
+    // });
   }
 }
 </script>
