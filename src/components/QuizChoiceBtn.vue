@@ -29,7 +29,8 @@ export default class QuizChoiceBtn extends Vue {
   }
 
   private onChoiceClicked() {
-    alert(this.choice_no);
+    let choiceNo: number = this.choice_no;
+    this.$emit('choice_clicked', choiceNo);
   }
 }
 </script>

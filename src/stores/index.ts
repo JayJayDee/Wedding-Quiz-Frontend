@@ -5,12 +5,13 @@ import { Member, Play } from "@/types";
 import { rootState } from '@/stores/state';
 import { rootMutations } from '@/stores/mutations';
 import { rootActions } from '@/stores/actions';
-import { Quiz } from '@/types/common';
+import { Quiz, PlayResult } from '@/types/common';
 
 export interface RootState {
   member_token: string | null;
   member: Member | null;
   play: Play | null;
+  play_result: PlayResult | null;
   is_loading: boolean;
   error: string | null;
   current_quiz: Quiz | null;

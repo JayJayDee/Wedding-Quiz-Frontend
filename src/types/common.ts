@@ -11,7 +11,16 @@ export interface Play {
   num_incorrect: number;
   is_ended: boolean;
 }
+export interface PlayResult {
+  is_win: boolean;
+  correct_answer: string
+}
 
+export interface Quiz {
+  difficulty: number;
+  choices: QuizChoice[];
+  questions: QuizQuestion[];
+}
 export interface QuizChoice {
   choice_no: number;
   content: string;
@@ -23,9 +32,4 @@ export interface QuizQuestion {
   question_no: number;
   type: QuizQuestionType;
   content: string;
-}
-export interface Quiz {
-  difficulty: number;
-  choices: QuizChoice[];
-  questions: QuizQuestion[];
 }
