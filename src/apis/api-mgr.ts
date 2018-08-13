@@ -2,8 +2,8 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 import * as _ from 'lodash';
 
-import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz } from "@/apis";
-import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember } from '@/apis/converters';
+import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz, ReqSolveQuiz, ResSolveQuiz } from "@/apis";
+import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult } from '@/apis/converters';
 
 const baseUrl = 'http://dev-api.chatpot.chat';
 
@@ -46,6 +46,21 @@ export const ApiManager = {
         questions: _.map(rawResp.quiz.questions, cvtToQuizQuestion),
         choices: _.map(rawResp.quiz.choices, cvtToQuizChoice),
       },
+      play: cvtToPlay(rawResp.play)
+    };
+    return resp;
+  },
+
+  async requestSolveQuiz(req: ReqSolveQuiz): Promise<ResSolveQuiz> {
+    let rawResp: any = await this.requestViaAxios({
+      url: `${baseUrl}/member/${req.member_token}/solve`,
+      method: 'post',
+      data: {
+        choice_no: req.choice_no
+      }
+    });
+    let resp: ResSolveQuiz = {
+      result: cvtToPlayResult(rawResp.result),
       play: cvtToPlay(rawResp.play)
     };
     return resp;

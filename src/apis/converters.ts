@@ -1,5 +1,5 @@
 import { Play } from '@/types';
-import { QuizQuestion, QuizQuestionType, QuizChoice, Member } from '@/types/common';
+import { QuizQuestion, QuizQuestionType, QuizChoice, Member, PlayResult } from '@/types/common';
 
 export function cvtToPlay(rawElem: any): Play {
   let play: Play = {
@@ -37,4 +37,13 @@ export function cvtToMember(raw: any): Member {
     phone: raw.phone
   };
   return member;
+}
+
+export function cvtToPlayResult(raw: any): PlayResult {
+  let result: PlayResult = {
+    is_win: raw.is_win,
+    correct_answer: raw.correct_answer,
+    answer_description: '호옹이 정답 설명' //TODO: to be changed to real description.
+  };
+  return result;
 }

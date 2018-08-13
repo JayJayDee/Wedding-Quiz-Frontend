@@ -25,7 +25,8 @@
             v-for="choice in choices" 
             :key="choice.choice_no"
             :choice_no="choice.choice_no"
-            :content="choice.content" />
+            :content="choice.content"
+            v-on:choice_clicked="onChoose" />
         </v-card-text>
       </v-card>
     </v-flex>
@@ -53,6 +54,9 @@ export default class QuizPlay extends Vue {
   @Action('refreshQuizAndPlay')
   private refreshQuizAndPlay: () => Promise<any>;
 
+  @Action('solveQuiz')
+  private solveQuiz: (choiceNo: number) => Promise<any>;
+
   @State('current_quiz')
   private currentQuiz: Quiz;
 
@@ -64,7 +68,10 @@ export default class QuizPlay extends Vue {
   }
 
   public mounted() {
-    this.refreshQuizScene();
+    this.refreshQuizAndPlay()
+    .then(() => {
+      console.log('quiz refreshed!');
+    });
   }
 
   private get questions(): QuizQuestion[] {
@@ -88,8 +95,15 @@ export default class QuizPlay extends Vue {
     return `${ordinalExpr} 퀴즈`;
   }
 
-  public refreshQuizScene() {
-    this.refreshQuizAndPlay();
+  public onChoose(choiceNo: number) {
+    let self = this;
+    this.solveQuiz(choiceNo)
+    .then(() => {
+      return self.refreshQuizAndPlay();
+    })
+    .then(() => {
+      console.log('solve completed');
+    });
   }
 }
 </script>

@@ -1,5 +1,5 @@
 
-import { ResMemberGet, ReqMemberCreate, ResMemberCreate, ResGetQuiz } from '@/apis';
+import { ResMemberGet, ReqMemberCreate, ResMemberCreate, ResGetQuiz, ResSolveQuiz } from '@/apis';
 import { ActionContext } from '../../node_modules/vuex';
 import { RootState, TOKEN_KEY_NAME } from '@/stores';
 import { ApiManager } from '@/apis/api-mgr';
@@ -65,4 +65,20 @@ export const rootActions = {
       store.commit('loadingStatus', false);
     }
   },
+
+  async solveQuiz(store: ActionContext<RootState, any>, choiceNo: number) {
+    store.commit('loadingStatus', true);
+    try {
+      let memberToken: string = store.state.member_token as string;
+      let resp: ResSolveQuiz = await ApiManager.requestSolveQuiz({
+        member_token: memberToken,
+        choice_no: choiceNo
+      });
+      store.commit('playResult', resp.result);
+      store.commit('loadingStatus', false);
+    } catch (err) {
+      store.commit('error', err.toString());
+      store.commit('loadingStatus', false);
+    }
+  }
 };

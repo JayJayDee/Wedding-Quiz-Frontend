@@ -1,5 +1,5 @@
 import { Member, Play } from '@/types';
-import { Quiz } from '@/types/common';
+import { Quiz, PlayResult } from '@/types/common';
 
 
 export interface ReqMemberGet {
@@ -23,6 +23,15 @@ export interface ReqGetQuiz {
 }
 export interface ResGetQuiz {
   quiz: Quiz;
+  play: Play;
+}
+
+export interface ReqSolveQuiz {
+  member_token: string;
+  choice_no: number;
+}
+export interface ResSolveQuiz {
+  result: PlayResult;
   play: Play;
 }
 

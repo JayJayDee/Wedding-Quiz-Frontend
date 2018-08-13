@@ -1,8 +1,8 @@
 
 <template>
   <v-btn 
+    :block="true"
     class="choice-btn" 
-    block="true"
     @click="onChoiceClicked">
     <p>{{ btnContent }}</p>
   </v-btn>

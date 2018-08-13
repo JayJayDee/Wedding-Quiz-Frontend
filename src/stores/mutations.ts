@@ -1,6 +1,6 @@
 import { RootState } from '@/stores';
 import { Member, Play } from '@/types';
-import { Quiz } from '@/types/common';
+import { Quiz, PlayResult } from '@/types/common';
 
 export const rootMutations = {
   memberToken(state: RootState, memberToken: string) {
@@ -26,4 +26,8 @@ export const rootMutations = {
   currentQuiz(state: RootState, quiz: Quiz) {
     state.current_quiz = quiz;
   },
+
+  playResult(state: RootState, result: PlayResult) {
+    state.play_result = result;
+  }
 };

@@ -13,7 +13,8 @@ export interface Play {
 }
 export interface PlayResult {
   is_win: boolean;
-  correct_answer: string
+  correct_answer: string;
+  answer_description: string;
 }
 
 export interface Quiz {
