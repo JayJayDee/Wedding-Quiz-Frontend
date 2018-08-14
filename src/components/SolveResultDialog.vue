@@ -1,13 +1,8 @@
 
 <template>
   <v-dialog 
-    class="transparent"
-    v-model="isShow" 
-    persistent>
-    <v-progress-circular
-      indeterminate
-      color="white">
-    </v-progress-circular>
+    v-model="isShow">
+    호옹이
   </v-dialog>
 </template>
 
@@ -25,13 +20,13 @@ export default class SolveResultDialog extends Vue {
   private isShow: boolean;
 
   public mounted() {
-    console.log('loading-mounted!');
+    console.log('solve-result');
   }
 }
 </script>
 
-<style lang="css" scoped>
-v-dialog.transparent {
+<style lang="css">
+.v-dialog.transparent {
   -webkit-box-shadow: none;
   box-shadow: none;
 }

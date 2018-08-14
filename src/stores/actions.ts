@@ -6,9 +6,19 @@ import { ApiManager } from '@/apis/api-mgr';
 import { Member } from '@/types';
 import { Quiz } from '@/types/common';
 
+let delayLittle = function(): Promise<any> {
+  return new Promise((resolve: Function, reject: Function) => {
+    setTimeout(() => {
+      return resolve();
+    }, 1000);
+  });
+}
+
 export const rootActions = {
   async authorize(store: ActionContext<RootState, any>) {
     store.commit('loadingStatus', true);
+
+    await delayLittle();
 
     let memberToken: string | null = localStorage.getItem(TOKEN_KEY_NAME);
     if (!memberToken) {
@@ -34,6 +44,8 @@ export const rootActions = {
 
   async createMember(store: ActionContext<RootState, any>, member: Member) {
     store.commit('loadingStatus', true);
+    await delayLittle();
+
     try {
       let resp: ResMemberCreate = await ApiManager.requestCreateMember(member);
       localStorage.setItem(TOKEN_KEY_NAME, resp.member_token);
@@ -53,6 +65,8 @@ export const rootActions = {
 
   async refreshQuizAndPlay(store: ActionContext<RootState, any>) {
     store.commit('loadingStatus', true);
+    await delayLittle();
+
     try {
       let memberToken: string = store.state.member_token as string;
       let resp: ResGetQuiz = await ApiManager.requestGetQuiz({
@@ -69,6 +83,8 @@ export const rootActions = {
 
   async solveQuiz(store: ActionContext<RootState, any>, choiceNo: number) {
     store.commit('loadingStatus', true);
+    await delayLittle();
+    
     try {
       let memberToken: string = store.state.member_token as string;
       let resp: ResSolveQuiz = await ApiManager.requestSolveQuiz({

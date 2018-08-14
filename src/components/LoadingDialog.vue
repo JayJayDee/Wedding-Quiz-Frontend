@@ -1,11 +1,12 @@
 
 <template>
   <v-dialog 
-    class="transparent-dialog"
+    content-class="transparent"
     v-model="isLoading" 
     persistent>
     <v-progress-circular
       indeterminate
+      size="80"
       color="white">
     </v-progress-circular>
   </v-dialog>
@@ -31,8 +32,8 @@ export default class LoadingDialog extends Vue {
 </script>
 
 <style scoped>
-.transparent-dialog {
-  -webkit-box-shadow: 0;
-  box-shadow: 0;
+.v-dialog.transparent {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 </style>
