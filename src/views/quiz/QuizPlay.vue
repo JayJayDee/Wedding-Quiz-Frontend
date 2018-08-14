@@ -31,7 +31,7 @@
       </v-card>
     </v-flex>
 
-    <solve-result-dialog :is-show="testDialogShow" />
+    <solve-result-dialog :is-show="isResultDialogShow" />
   </v-layout>
 </template>
 
@@ -41,7 +41,7 @@ import Component from 'vue-class-component';
 import { Action, State } from 'vuex-class';
 
 import { KorLexicalUtil } from '@/utils';
-import { Quiz, QuizQuestion, QuizChoice, Play } from '@/types/common';
+import { Quiz, QuizQuestion, QuizChoice, Play, PlayResult } from '@/types/common';
 import QuizQuestionRow from '@/components/QuizQuestionRow.vue';
 import QuizChoiceBtn from '@/components/QuizChoiceBtn.vue';
 import SolveResultDialog from '@/components/SolveResultDialog.vue';
@@ -67,11 +67,11 @@ export default class QuizPlay extends Vue {
   @State('play')
   private currentPlay: Play;
 
-  private testDialogShow: boolean;
+  @State('play_result')
+  private playResult: PlayResult;
 
   constructor() {
     super();
-    this.testDialogShow = false;
   }
 
   public mounted() {
@@ -98,14 +98,17 @@ export default class QuizPlay extends Vue {
 
   private get currentPlayingTitle(): string {
     if (!this.currentPlay) return '';
-    console.log(this.currentPlay);
     let ordinalExpr: string = KorLexicalUtil.getOrdinalExpr(this.currentPlay.num_played + 1);
     return `${ordinalExpr} 퀴즈`;
   }
 
+  private get isResultDialogShow(): boolean {
+    // if (!this.playResult) return false;
+    return true;
+  }
+
   public onChoose(choiceNo: number) {
     let self = this;
-    this.testDialogShow = true;
 
     console.log('test!');
 

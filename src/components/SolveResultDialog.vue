@@ -1,8 +1,20 @@
 
 <template>
   <v-dialog 
-    v-model="isShow">
-    호옹이
+    v-model="isShow"
+    transition="dialog-bottom-transition"
+    persistent>
+    <v-card>
+      <v-card-title>
+        <h3>정답입니다!</h3>
+      </v-card-title>
+      <v-card-text>
+        호옹이 정답 설명
+      </v-card-text>
+      <v-card-actions>
+        <v-btn color="primary" flat block>확인</v-btn>
+      </v-card-actions>
+    </v-card>
   </v-dialog>
 </template>
 
