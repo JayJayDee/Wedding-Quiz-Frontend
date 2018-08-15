@@ -10,7 +10,7 @@ let delayLittle = function(): Promise<any> {
   return new Promise((resolve: Function, reject: Function) => {
     setTimeout(() => {
       return resolve();
-    }, 1000);
+    }, 500);
   });
 }
 
@@ -92,6 +92,19 @@ export const rootActions = {
         choice_no: choiceNo
       });
       store.commit('playResult', resp.result);
+      store.commit('loadingStatus', false);
+    } catch (err) {
+      store.commit('error', err.toString());
+      store.commit('loadingStatus', false);
+    }
+  },
+
+  async confirmAnswer(store: ActionContext<RootState, any>) {
+    store.commit('loadingStatus', true);
+    await delayLittle();
+    
+    try {
+      store.commit('playResult', null);
       store.commit('loadingStatus', false);
     } catch (err) {
       store.commit('error', err.toString());

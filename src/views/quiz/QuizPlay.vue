@@ -31,7 +31,7 @@
       </v-card>
     </v-flex>
 
-    <solve-result-dialog :is-show="isResultDialogShow" />
+    <solve-result-dialog />
   </v-layout>
 </template>
 
@@ -109,17 +109,13 @@ export default class QuizPlay extends Vue {
 
   public onChoose(choiceNo: number) {
     let self = this;
-
-    console.log('test!');
-
-
-    // this.solveQuiz(choiceNo)
-    // .then(() => {
-    //   return self.refreshQuizAndPlay();
-    // })
-    // .then(() => {
-    //   console.log('solve completed');
-    // });
+    this.solveQuiz(choiceNo)
+    .then(() => {
+      return self.refreshQuizAndPlay();
+    })
+    .then(() => {
+      console.log('solve completed');
+    });
   }
 }
 </script>

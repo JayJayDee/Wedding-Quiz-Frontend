@@ -12,5 +12,12 @@ export const KorLexicalUtil: LexcialUtil = {
       return n.toString();
     }
     return korOrdinalArr[n - 1];
+  },
+
+  getCorrectExpr: function(correct: boolean): string {
+    if (correct === true) {
+      return '정답입니다!';
+    }
+    return '틀렸습니다 ㅋㅋㅋㅋ';
   }
 }
