@@ -39,14 +39,21 @@ export default class SolveResultDialog extends Vue {
   @Action('confirmAnswer')
   private confirmAnswer: () => Promise<any>;
 
+  @Action('refreshQuizAndPlay')
+  private refreshQuizAndPlay: () => Promise<any>;
+
   public mounted() {
     console.log('solve-result');
   }
 
   public onConfirmClicked() {
+    let self = this;
     this.confirmAnswer()
     .then(() => {
-      console.log('confirmed');
+      return self.refreshQuizAndPlay();
+    })
+    .then(() => {
+      console.log('refreshed');
     });
   }
 

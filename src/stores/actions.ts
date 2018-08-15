@@ -100,15 +100,7 @@ export const rootActions = {
   },
 
   async confirmAnswer(store: ActionContext<RootState, any>) {
-    store.commit('loadingStatus', true);
-    await delayLittle();
-    
-    try {
-      store.commit('playResult', null);
-      store.commit('loadingStatus', false);
-    } catch (err) {
-      store.commit('error', err.toString());
-      store.commit('loadingStatus', false);
-    }
+    store.commit('playResult', null);
+    return;
   }
 };

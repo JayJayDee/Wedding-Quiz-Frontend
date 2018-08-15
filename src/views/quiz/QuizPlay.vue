@@ -77,7 +77,7 @@ export default class QuizPlay extends Vue {
   public mounted() {
     this.refreshQuizAndPlay()
     .then(() => {
-      console.log('quiz refreshed!');
+      
     });
   }
 
@@ -111,10 +111,7 @@ export default class QuizPlay extends Vue {
     let self = this;
     this.solveQuiz(choiceNo)
     .then(() => {
-      return self.refreshQuizAndPlay();
-    })
-    .then(() => {
-      console.log('solve completed');
+      
     });
   }
 }
