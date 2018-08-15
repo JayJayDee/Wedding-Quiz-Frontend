@@ -43,7 +43,7 @@ export function cvtToPlayResult(raw: any): PlayResult {
   let result: PlayResult = {
     is_win: raw.is_win,
     correct_answer: raw.correct_answer,
-    answer_description: '호옹이 정답 설명' //TODO: to be changed to real description.
+    answer_description: raw.answer_description
   };
   return result;
 }
