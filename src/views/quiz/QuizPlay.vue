@@ -102,11 +102,6 @@ export default class QuizPlay extends Vue {
     return `${ordinalExpr} 퀴즈`;
   }
 
-  private get isResultDialogShow(): boolean {
-    // if (!this.playResult) return false;
-    return true;
-  }
-
   public onChoose(choiceNo: number) {
     let self = this;
     this.solveQuiz(choiceNo)

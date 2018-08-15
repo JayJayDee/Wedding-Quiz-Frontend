@@ -22,7 +22,7 @@ export interface ReqGetQuiz {
   member_token: string;
 }
 export interface ResGetQuiz {
-  quiz: Quiz;
+  quiz: Quiz | null;
   play: Play;
 }
 

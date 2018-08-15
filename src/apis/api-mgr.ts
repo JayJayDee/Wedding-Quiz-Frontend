@@ -41,13 +41,17 @@ export const ApiManager = {
     });
 
     let resp: ResGetQuiz = {
-      quiz: {
+      quiz: null,
+      play: cvtToPlay(rawResp.play)
+    };
+
+    if (rawResp.quiz) {
+      resp.quiz = {
         difficulty: rawResp.quiz.difficulty,
         questions: _.map(rawResp.quiz.questions, cvtToQuizQuestion),
         choices: _.map(rawResp.quiz.choices, cvtToQuizChoice),
-      },
-      play: cvtToPlay(rawResp.play)
-    };
+      };
+    }
     return resp;
   },
 
