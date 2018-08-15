@@ -9,7 +9,11 @@
 
       <!-- 가입한 적이 있는 경우 -->
       <quiz-play
-        v-if="memberJoined && isLoaded === true" />
+        v-if="memberJoined && isLoaded === true && isAllQuizPlayed === false" />
+
+      <!-- 모든 퀴즈 플레이 완료 -->
+      <quiz-play-end
+        v-if="memberJoined && isAllQuizPlayed === true" />
     </v-layout>
   </v-container>
 </template>
@@ -21,16 +25,19 @@ import { Play, Member } from '@/types';
 
 import QuizEntry from './quiz/QuizEntry.vue';
 import QuizPlay from './quiz/QuizPlay.vue';
+import QuizPlayEnd from './quiz/QuizPlayEnd.vue';
 import Component from 'vue-class-component';
 
 @Component({
   components: {
-    QuizEntry, QuizPlay
+    QuizEntry, QuizPlay, QuizPlayEnd
   }
 })
 export default class Quiz extends Vue {
+
   @State('member_token')
   private memberToken: string | null;
+
   @State('play') 
   private play: Play | null;
 
@@ -50,6 +57,12 @@ export default class Quiz extends Vue {
 
   private get memberJoined(): boolean {
     if (this.memberToken) return true;
+    return false;
+  }
+
+  private get isAllQuizPlayed(): boolean {
+    if (!this.play) return false;
+    if (this.play.num_all_quiz === this.play.num_played) return true;
     return false;
   }
 
