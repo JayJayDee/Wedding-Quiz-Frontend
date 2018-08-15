@@ -1,13 +1,15 @@
 
 <template>
-  <v-card>
-    <v-card-title>
-      <h3>모든 퀴즈를 다 푸셨습니다!</h3>
-    </v-card-title>
-    <v-card-text>
-      호옹!
-    </v-card-text>
-  </v-card>
+  <v-layout column="1">    
+    <v-card block>
+      <v-card-title>
+        <h3>모든 퀴즈를 다 푸셨습니다!</h3>
+      </v-card-title>
+      <v-card-text>
+        호옹!
+      </v-card-text>
+    </v-card>
+  </v-layout>
 </template>
 
 <script lang="ts">
