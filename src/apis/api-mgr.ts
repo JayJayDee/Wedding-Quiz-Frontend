@@ -2,8 +2,9 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 import * as _ from 'lodash';
 
-import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz, ReqSolveQuiz, ResSolveQuiz } from "@/apis";
-import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult } from '@/apis/converters';
+import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz, ReqSolveQuiz, ResSolveQuiz, ReqRanks } from "@/apis";
+import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult, cvtToRankElement } from '@/apis/converters';
+import { RankElement } from '@/types/common';
 
 const baseUrl = 'http://dev-api.chatpot.chat';
 
@@ -69,6 +70,15 @@ export const ApiManager = {
     };
     return resp;
   },
+
+  async requestRanks(req: ReqRanks): Promise<RankElement[]> {
+    let rawResp: any = await this.requestViaAxios({
+      url: `${baseUrl}/ranks`,
+      method: 'get'
+    });
+    let resp: RankElement[] = _.map(rawResp, cvtToRankElement);
+    return resp;
+  }
 
   async requestViaAxios(axiosOpts: AxiosRequestConfig): Promise<any> {
     try {

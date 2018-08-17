@@ -15,6 +15,7 @@ export interface PlayResult {
   is_win: boolean;
   correct_answer: string;
   answer_description: string;
+  gain_score: number;
 }
 
 export interface Quiz {
@@ -33,4 +34,13 @@ export interface QuizQuestion {
   question_no: number;
   type: QuizQuestionType;
   content: string;
+}
+
+export interface RankElement {
+  rank: number;
+  name: string;
+  phone: string;
+  win_count: number;
+  play_time: number;
+  score_sum: number;
 }
