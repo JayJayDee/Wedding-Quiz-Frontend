@@ -78,7 +78,7 @@ export const ApiManager = {
     });
     let resp: RankElement[] = _.map(rawResp, cvtToRankElement);
     return resp;
-  }
+  },
 
   async requestViaAxios(axiosOpts: AxiosRequestConfig): Promise<any> {
     try {

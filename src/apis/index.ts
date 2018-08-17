@@ -35,6 +35,10 @@ export interface ResSolveQuiz {
   play: Play;
 }
 
+export interface ReqRanks {
+  
+}
+
 export class ApiRequestError extends Error {
   private msg: string;
 
