@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue';
 import Quiz from './views/Quiz.vue';
+import Rank from './views/Rank.vue';
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/quiz',
       name: 'quiz',
       component: Quiz
+    },
+    {
+      path: '/rank',
+      name: 'rank',
+      component: Rank
     }
   ]
 })
