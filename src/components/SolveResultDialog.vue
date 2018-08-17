@@ -14,6 +14,11 @@
       <v-card-text> 
         {{ anserDescriptionExpr }}
       </v-card-text>
+      <v-scale-transition>
+        <v-card-text v-show="scoreShow">
+          <p class="subheading">{{ scoreExpr }}</p>
+        </v-card-text>
+      </v-scale-transition>
       <v-card-actions>
         <v-btn 
           @click="onConfirmClicked"
@@ -29,9 +34,26 @@ import Component from 'vue-class-component';
 import { PlayResult } from '@/types/common';
 import { State, Action } from 'vuex-class';
 import { KorLexicalUtil } from '@/utils';
+import { setTimeout } from 'timers';
 
-@Component
+@Component({
+  watch: {
+    isShow: function(show: boolean) {
+      let self: SolveResultDialog = (this as SolveResultDialog);
+      if (show === true) {
+        if (self.playResult.is_win === false) return;
+        setTimeout(() => {
+          self.scoreShow = true;
+        }, 500);
+      } else {
+        self.scoreShow = false;
+      }
+    }
+  }
+})
 export default class SolveResultDialog extends Vue {
+
+  private scoreShow: boolean;
 
   @State('play_result')
   private playResult: PlayResult;
@@ -42,8 +64,14 @@ export default class SolveResultDialog extends Vue {
   @Action('refreshQuizAndPlay')
   private refreshQuizAndPlay: () => Promise<any>;
 
+  constructor() {
+    super();
+    this.scoreShow = false;
+  }
+
   public mounted() {
-    console.log('solve-result');
+    this.scoreShow = false;
+    let self = this;
   }
 
   public onConfirmClicked() {
@@ -67,6 +95,12 @@ export default class SolveResultDialog extends Vue {
       return false;
     }
     return true;
+  }
+
+  private get scoreExpr(): string {
+    if (!this.playResult) return '';
+    if (this.playResult.gain_score !== 0) return `${this.playResult.gain_score}점 획득!`;
+    return '';
   }
 
   private get answerExpr(): string {
