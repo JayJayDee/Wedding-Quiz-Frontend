@@ -117,4 +117,12 @@ export default class App extends Vue {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+h3 {
+  color: #333333;
+}
+
+p {
+  color: #333333;
+}
 </style>
