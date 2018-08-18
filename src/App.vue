@@ -13,7 +13,7 @@
       </v-layout>
       <div style="height: 50px;"></div>
     </v-content>
-    <v-footer height="1" fixed>
+    <v-footer color="transparent" fixed>
       <v-bottom-nav
         :active.sync="nav"
         :value="isNavShow"
@@ -74,13 +74,14 @@ export default class App extends Vue {
   }
 
   public onScroll(e: any) {
-    if (this.prevY === null) return this.prevY = e.pageY;
-    if (this.prevY < e.pageY) {
+    let currentY: number = window.pageYOffset || document.documentElement.scrollTop;
+    if (this.prevY === null) return this.prevY = currentY;
+    if (this.prevY < currentY) {
       this.isNavShow = false;
     } else {
       this.isNavShow = true;
     }
-    this.prevY = e.pageY;
+    this.prevY = currentY;
   }
 
   public mounted() {
