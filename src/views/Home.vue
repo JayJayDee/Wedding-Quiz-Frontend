@@ -15,16 +15,55 @@
         </v-card-text>
         <hr />
         <v-card-text>
-          <p class="typo">
-            이 슬 . 정진동<br />
-            2018.10.27 SAT 11:00 AM<br />
-            복정 밀리토피아 호텔
-          </p>
+          <p class="typo">이 슬 . 정진동</p>
+          <p class="typo">2018.10.27 SAT 11:00 AM</p>
+          <p class="typo">복정 밀리토피아 호텔</p>
         </v-card-text>
       </v-card>
     </v-flex>
 
-    <v-flex xs12 class="row">
+    <v-flex class="margin-section" xs12>
+      <v-card
+        color="transparent">
+        <v-card-text>
+          <h3 class="headline mb-0 typo">초대합니다</h3>
+          <p></p>
+          <p class="typo">오래전의 인연이 저희를 연인으로 만들었습니다.</p>
+          <p class="typo">너무도 다른 우리지만, 사랑으로 하나되려 합니다.</p>
+          <p class="typo">귀한 걸음 하시어</p>
+          <p class="typo">저희를 축하해주시면 고맙겠습니다.</p>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
+    <v-flex class="margin-section" xs12>
+      <v-card
+        color="transparent">
+        <v-card-text>
+          <h3 class="headline mb-0 typo">사진 갤러리 영역</h3>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
+    <v-flex class="margin-section" xs12>
+      <v-card
+        color="transparent">
+        <v-card-text>
+          <h3 class="headline mb-0 typo">연락처 영역</h3>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
+    <v-flex class="margin-section" xs12>
+      <v-card
+        color="transparent">
+        <v-card-text>
+          <h3 class="headline mb-0 typo">일시,장소 가이드 영역</h3>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
+    <v-flex xs12 class="row margin-section">
       <v-card>
         <v-card-title>
           <h3>퀴즈를 풀어 주세요!</h3>
@@ -65,6 +104,12 @@ hr {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
-  border-style: solid 1px #999999;
+  border: solid 0.3px;
+  border-color: #aaaaaa;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.margin-section {
+  margin-top: 50px;
 }
 </style>
