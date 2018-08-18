@@ -73,7 +73,7 @@ export default class App extends Vue {
     this.isNavShow = true;
   }
 
-  public onScroll(e: UIEvent) {
+  public onScroll(e: any) {
     if (this.prevY === null) return this.prevY = e.pageY;
     if (this.prevY < e.pageY) {
       this.isNavShow = false;
