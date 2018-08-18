@@ -6,7 +6,7 @@
         <v-card-media
           :src="require('../assets/main_top_bg.jpg')"
           height="200px"></v-card-media>
-        <v-card-text>
+        <v-card-text class="margin-section">
           <h3 class="headline mb-0 typo">우리, 결혼합니다.</h3>
           <p></p>
           <p class="typo">서울에서 온 미대생. 대구에서 온 공대생.</p>

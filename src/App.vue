@@ -1,8 +1,10 @@
 <template>
   <v-app>
-    <v-navigation-drawer app></v-navigation-drawer>
+    <!-- <v-navigation-drawer app></v-navigation-drawer> -->
     <v-toolbar 
-      color="white" app>
+      color="white" 
+      app
+      v-if="showTopMenuBar">
       <!-- <v-toolbar-side-icon color="primary"></v-toolbar-side-icon> -->
       <v-toolbar-title class="teal--text">Seul&Dong's Wedding</v-toolbar-title>
     </v-toolbar>
@@ -68,9 +70,16 @@ export default class App extends Vue {
 
   constructor() {
     super();
-    this.nav = 'home';
+    this.nav = this.getCurrentNav();
     this.prevY = null;
     this.isNavShow = true;
+  }
+
+  private getCurrentNav(): string {
+    let url = location.href;
+    if (url.includes('quiz')) return 'quiz';
+    else if (url.includes('rank')) return 'rank';
+    return 'home';
   }
 
   public onScroll(e: any) {
@@ -82,6 +91,11 @@ export default class App extends Vue {
       this.isNavShow = true;
     }
     this.prevY = currentY;
+  }
+
+  public get showTopMenuBar(): boolean {
+    if (this.nav === 'home') return false;
+    return true;
   }
 
   public mounted() {
