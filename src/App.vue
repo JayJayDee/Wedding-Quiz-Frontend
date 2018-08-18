@@ -8,13 +8,15 @@
     </v-toolbar>
     <loading-dialog :is-loading="isLoading"></loading-dialog>
     <v-content>
-      <router-view></router-view>
-      <div style="height: 60px;"></div>
+      <v-layout v-scroll="onScroll">
+        <router-view></router-view>
+      </v-layout>
+      <div style="height: 50px;"></div>
     </v-content>
-    <v-footer height="50" fixed>
+    <v-footer height="1" fixed>
       <v-bottom-nav
         :active.sync="nav"
-        :value="true"
+        :value="isNavShow"
         absolute
         color="white">
         <v-btn color="teal" flat value="home" to="/">
@@ -55,6 +57,8 @@ export default class App extends Vue {
   private memberToken: string | null;
 
   private nav: string;
+  private prevY: number | null;
+  private isNavShow: boolean;
 
   @State('is_loading')
   private isLoading: boolean;
@@ -65,6 +69,18 @@ export default class App extends Vue {
   constructor() {
     super();
     this.nav = 'home';
+    this.prevY = null;
+    this.isNavShow = true;
+  }
+
+  public onScroll(e: UIEvent) {
+    if (this.prevY === null) return this.prevY = e.pageY;
+    if (this.prevY < e.pageY) {
+      this.isNavShow = false;
+    } else {
+      this.isNavShow = true;
+    }
+    this.prevY = e.pageY;
   }
 
   public mounted() {
