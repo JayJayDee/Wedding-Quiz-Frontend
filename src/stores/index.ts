@@ -5,7 +5,7 @@ import { Member, Play } from "@/types";
 import { rootState } from '@/stores/state';
 import { rootMutations } from '@/stores/mutations';
 import { rootActions } from '@/stores/actions';
-import { Quiz, PlayResult } from '@/types/common';
+import { Quiz, PlayResult, RankElement } from '@/types/common';
 
 export interface RootState {
   member_token: string | null;
@@ -15,6 +15,7 @@ export interface RootState {
   is_loading: boolean;
   error: string | null;
   current_quiz: Quiz | null;
+  ranks: RankElement[] | null;
 }
 
 export const TOKEN_KEY_NAME = 'wedd-quiz-token';

@@ -14,6 +14,7 @@ import Component from 'vue-class-component';
 
 import RankAll from './rank/RankAll.vue';
 import RankMy from './rank/RankMy.vue';
+import { Action } from 'vuex-class';
 
 @Component({
   components: {
@@ -22,6 +23,14 @@ import RankMy from './rank/RankMy.vue';
 })
 export default class Rank extends Vue {
 
+  @Action('queryRanks')
+  private queryRanks: () => Promise<any>;
+
+  public mounted() {
+    this.queryRanks().then(() => {
+      console.log('query-rank-completed');
+    });
+  }
 }
 </script>
 

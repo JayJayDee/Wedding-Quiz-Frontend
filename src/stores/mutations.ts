@@ -1,6 +1,6 @@
 import { RootState } from '@/stores';
 import { Member, Play } from '@/types';
-import { Quiz, PlayResult } from '@/types/common';
+import { Quiz, PlayResult, RankElement } from '@/types/common';
 
 export const rootMutations = {
   memberToken(state: RootState, memberToken: string) {
@@ -29,5 +29,9 @@ export const rootMutations = {
 
   playResult(state: RootState, result: PlayResult) {
     state.play_result = result;
+  },
+
+  ranks(state: RootState, ranks: RankElement[]) {
+    state.ranks = ranks;
   }
 };
