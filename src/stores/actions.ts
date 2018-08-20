@@ -111,6 +111,7 @@ export const rootActions = {
     try {
       let ranks: RankElement[] = await ApiManager.requestRanks({});
       store.commit('ranks', ranks);
+      store.commit('loadingStatus', false);
       return;
     } catch (err) {
       store.commit('error', err.toString());
