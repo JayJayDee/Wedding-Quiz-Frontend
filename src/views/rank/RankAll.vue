@@ -4,8 +4,13 @@
     <v-card-title>
       <h3>전체 랭킹</h3>
     </v-card-title>
-    <v-card-text> 
-    </v-card-text>
+    
+    <v-list two-line>
+      <all-rank-row 
+        v-for="rank in ranks"
+        :key="rank.rank" />
+    </v-list>
+    
   </v-card>
 </template>
 
@@ -13,8 +18,18 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-@Component
+import AllRankRow from '@/components/AllRankRow.vue';
+import { RankElement } from '@/types/common';
+import { State } from 'vuex-class';
+
+@Component({
+  components: {
+    AllRankRow
+  }
+})
 export default class RankAll extends Vue {
 
+  @State('ranks')
+  private ranks: RankElement[];
 }
 </script>
