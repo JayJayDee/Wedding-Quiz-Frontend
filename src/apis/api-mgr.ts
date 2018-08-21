@@ -6,7 +6,7 @@ import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiReques
 import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult, cvtToRankElement } from '@/apis/converters';
 import { RankElement } from '@/types/common';
 
-const baseUrl = 'http://dev-api.chatpot.chat';
+const baseUrl = 'http://api.weddquiz.com';
 
 export const ApiManager = {
 

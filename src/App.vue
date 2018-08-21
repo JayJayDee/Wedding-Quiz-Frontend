@@ -58,9 +58,9 @@ export default class App extends Vue {
   @State('member_token') 
   private memberToken: string | null;
 
-  private nav: string;
   private prevY: number | null;
   private isNavShow: boolean;
+  private nav: string = '';
 
   @State('is_loading')
   private isLoading: boolean;
@@ -70,7 +70,6 @@ export default class App extends Vue {
 
   constructor() {
     super();
-    this.nav = this.getCurrentNav();
     this.prevY = null;
     this.isNavShow = true;
   }
@@ -94,8 +93,12 @@ export default class App extends Vue {
   }
 
   public get showTopMenuBar(): boolean {
-    if (this.nav === 'home') return false;
-    return true;
+    if (this.nav === 'quiz' || this.nav === 'rank') return true;
+    return false;
+  }
+
+  public get routeName(): string | undefined {
+    return this.$router.currentRoute.name;
   }
 
   public mounted() {
