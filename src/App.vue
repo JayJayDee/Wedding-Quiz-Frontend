@@ -142,4 +142,8 @@ h3 {
 p {
   color: #333333;
 }
+
+body {
+  overflow:hidden;
+}
 </style>

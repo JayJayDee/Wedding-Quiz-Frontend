@@ -2,13 +2,22 @@
 <template>
   <v-card block>
     <v-card-title>
-      <h3>전체 랭킹</h3>
+      <h3>명예의 전당</h3>
+      <v-spacer />
+      <v-btn>더 많은 등수 보기</v-btn>
     </v-card-title>
     
     <v-list two-line>
-      <all-rank-row 
-        v-for="rank in ranks"
-        :key="rank.rank" />
+      <template 
+        v-for="(rank, index) in ranks">
+        <all-rank-row 
+          :rank="rank"
+          :key="rank.rank" />
+        <v-divider 
+          v-if="index + 1 < ranks.length" 
+          :inset="true"
+          :key="`divider-${index}`"></v-divider>
+      </template>
     </v-list>
     
   </v-card>

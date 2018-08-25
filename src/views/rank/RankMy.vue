@@ -17,5 +17,6 @@ import Component from 'vue-class-component';
 @Component
 export default class RankMy extends Vue {
 
+  
 }
 </script>

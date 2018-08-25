@@ -4,4 +4,9 @@ export interface LexcialUtil {
   getCorrectExpr(correct: boolean): string;
 }
 
+export interface PrizeImageUtil {
+  getPrizeImage(grade: number): string;
+}
+
 export { KorLexicalUtil } from './lexical-util-kor';
+export { DefaultPrizeImageUtil } from './prize-image-util';
