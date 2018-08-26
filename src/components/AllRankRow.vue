@@ -2,7 +2,7 @@
 <template>
   <v-list-tile>
     <v-list-tile-avatar>
-      <img :src="rankImage">
+      <img :src="rankImage" v-bind:alt="rankImageAlt">
     </v-list-tile-avatar>
     <v-list-tile-content>
       <v-list-tile-title>
@@ -62,9 +62,17 @@ export default class AllRankRow extends Vue {
   }
 
   public get rankImage(): string {
-    return 'https://cdn.vuetifyjs.com/images/lists/2.jpg';
-    // if (!this.rank) return '';
-    // return `${DefaultPrizeImageUtil.getPrizeImage(this.rank.rank)}`;
+    if (!this.rank) return '';
+    let imageUrl = DefaultPrizeImageUtil.getPrizeImage(this.rank.rank);
+    if (!imageUrl.includes('http')) {
+      imageUrl = require(`../assets/${imageUrl}`);
+    }
+    return imageUrl;
+  }
+  
+  public get rankImageAlt(): string {
+    if (!this.rank) return '';
+    return DefaultPrizeImageUtil.getPrizeImage(this.rank.rank);
   }
 }
 </script>
