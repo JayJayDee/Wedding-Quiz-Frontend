@@ -2,7 +2,7 @@
 <template>
   <v-list-tile>
     <v-list-tile-avatar>
-      <img :src="rankImage" v-bind:alt="rankImageAlt">
+      <img :src="rankImage">
     </v-list-tile-avatar>
     <v-list-tile-content>
       <v-list-tile-title>
@@ -63,16 +63,12 @@ export default class AllRankRow extends Vue {
 
   public get rankImage(): string {
     if (!this.rank) return '';
-    let imageUrl = DefaultPrizeImageUtil.getPrizeImage(this.rank.rank);
+    let imageUrl: string = DefaultPrizeImageUtil.getPrizeImage(this.rank.rank);
     if (!imageUrl.includes('http')) {
+      console.log(imageUrl);
       imageUrl = require(`../assets/${imageUrl}`);
     }
     return imageUrl;
-  }
-  
-  public get rankImageAlt(): string {
-    if (!this.rank) return '';
-    return DefaultPrizeImageUtil.getPrizeImage(this.rank.rank);
   }
 }
 </script>
