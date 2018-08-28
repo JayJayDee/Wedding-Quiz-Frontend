@@ -2,9 +2,9 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 import * as _ from 'lodash';
 
-import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz, ReqSolveQuiz, ResSolveQuiz, ReqRanks } from "@/apis";
-import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult, cvtToRankElement } from '@/apis/converters';
-import { RankElement } from '@/types/common';
+import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz, ReqSolveQuiz, ResSolveQuiz, ReqRanks, ReqGetMyRank, ResGetMyRank } from "@/apis";
+import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult, cvtToRankElement, cvtToMyRank } from '@/apis/converters';
+import { RankElement, MyRank } from '@/types/common';
 
 const baseUrl = 'http://api.weddquiz.com';
 
@@ -77,6 +77,15 @@ export const ApiManager = {
       method: 'get'
     });
     let resp: RankElement[] = _.map(rawResp, cvtToRankElement);
+    return resp;
+  },
+
+  async requestMyRank(req: ReqGetMyRank): Promise<ResGetMyRank> {
+    let rawResp: any = await this.requestViaAxios({
+      url: `${baseUrl}/member/:${req.member_token}`,
+      method: 'get'
+    });
+    let resp: MyRank = cvtToMyRank(rawResp);
     return resp;
   },
 

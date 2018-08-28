@@ -1,5 +1,5 @@
 import { Member, Play } from '@/types';
-import { Quiz, PlayResult } from '@/types/common';
+import { Quiz, PlayResult, MyRank } from '@/types/common';
 
 
 export interface ReqMemberGet {
@@ -35,9 +35,12 @@ export interface ResSolveQuiz {
   play: Play;
 }
 
-export interface ReqRanks {
-  
+export interface ReqRanks {}
+
+export interface ReqGetMyRank {
+  member_token: string;
 }
+export interface ResGetMyRank extends MyRank {}
 
 export class ApiRequestError extends Error {
   private msg: string;

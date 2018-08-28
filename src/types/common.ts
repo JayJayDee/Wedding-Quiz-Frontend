@@ -44,3 +44,8 @@ export interface RankElement {
   play_time: number;
   score_sum: number;
 }
+
+export interface MyRank {
+  rank: number;
+  challengers: number;
+}
