@@ -15,6 +15,7 @@ import Component from 'vue-class-component';
 import RankAll from './rank/RankAll.vue';
 import RankMy from './rank/RankMy.vue';
 import { Action, State } from 'vuex-class';
+import { setTimeout } from 'timers';
 
 @Component({
   components: {
@@ -34,12 +35,14 @@ export default class Rank extends Vue {
 
   public mounted() {
     let self: Rank = this;
-    this.queryRanks().then(() => {
-      if (self.isMyRankShow === true ) return self.queryMyRank(self.memberToken);
-    })
-    .then(() => {
-      console.log('query-my-rank-completed');
-    });
+    setTimeout(() => {
+      this.queryRanks().then(() => {
+        if (self.memberToken) return self.queryMyRank(self.memberToken);
+      })
+      .then(() => {
+        console.log('query-my-rank-completed');
+      });
+    }, 1);
   }
 
   public get isMyRankShow(): boolean {

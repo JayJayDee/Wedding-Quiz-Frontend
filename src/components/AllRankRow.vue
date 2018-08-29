@@ -65,7 +65,6 @@ export default class AllRankRow extends Vue {
     if (!this.rank) return '';
     let imageUrl: string = DefaultPrizeImageUtil.getPrizeImage(this.rank.rank);
     if (!imageUrl.includes('http')) {
-      console.log(imageUrl);
       imageUrl = require(`../assets/${imageUrl}`);
     }
     return imageUrl;

@@ -3,8 +3,6 @@
   <v-card block>
     <v-card-title>
       <h3>명예의 전당</h3>
-      <v-spacer />
-      <v-btn>더 많은 등수 보기</v-btn>
     </v-card-title>
     
     <v-list two-line>
