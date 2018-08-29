@@ -2,7 +2,7 @@
 <template>
   <v-container>
     <v-layout column="1" grid-list-md>
-      <rank-my class="rank-card" block />
+      <rank-my class="rank-card" v-if="isMyRankShow" block />
       <rank-all class="rank-card" block />
     </v-layout>
   </v-container>
@@ -14,7 +14,7 @@ import Component from 'vue-class-component';
 
 import RankAll from './rank/RankAll.vue';
 import RankMy from './rank/RankMy.vue';
-import { Action } from 'vuex-class';
+import { Action, State } from 'vuex-class';
 
 @Component({
   components: {
@@ -26,10 +26,25 @@ export default class Rank extends Vue {
   @Action('queryRanks')
   private queryRanks: () => Promise<any>;
 
+  @Action('queryMyRank')
+  private queryMyRank: (memberToken: string) => Promise<any>;
+
+  @State('member_token')
+  private memberToken: string;
+
   public mounted() {
+    let self: Rank = this;
     this.queryRanks().then(() => {
-      console.log('query-rank-completed');
+      if (self.isMyRankShow === true ) return self.queryMyRank(self.memberToken);
+    })
+    .then(() => {
+      console.log('query-my-rank-completed');
     });
+  }
+
+  public get isMyRankShow(): boolean {
+    if (!this.memberToken) return false;
+    return true;
   }
 }
 </script>

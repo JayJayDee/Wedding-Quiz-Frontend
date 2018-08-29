@@ -81,8 +81,9 @@ export const ApiManager = {
   },
 
   async requestMyRank(req: ReqGetMyRank): Promise<ResGetMyRank> {
+    console.log(req.member_token);
     let rawResp: any = await this.requestViaAxios({
-      url: `${baseUrl}/member/:${req.member_token}`,
+      url: `${baseUrl}/member/${req.member_token}/rank`,
       method: 'get'
     });
     let resp: MyRank = cvtToMyRank(rawResp);

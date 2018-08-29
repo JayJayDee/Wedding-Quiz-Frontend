@@ -4,7 +4,7 @@ import { ActionContext } from '../../node_modules/vuex';
 import { RootState, TOKEN_KEY_NAME } from '@/stores';
 import { ApiManager } from '@/apis/api-mgr';
 import { Member } from '@/types';
-import { Quiz, RankElement } from '@/types/common';
+import { Quiz, RankElement, MyRank } from '@/types/common';
 
 let delayLittle = function(): Promise<any> {
   return new Promise((resolve: Function, reject: Function) => {
@@ -113,6 +113,23 @@ export const rootActions = {
       store.commit('ranks', ranks);
       store.commit('loadingStatus', false);
       return;
+    } catch (err) {
+      store.commit('error', err.toString());
+      store.commit('loadingStatus', false);
+    }
+  },
+
+  async queryMyRank(store: ActionContext<RootState, any>, memberToken: string) {
+    if (!store.state.member_token) return;
+    store.commit('loadingStatus', true);
+    await delayLittle();
+
+    try {
+      let myRank: MyRank = await ApiManager.requestMyRank({
+        member_token: memberToken
+      });
+      store.commit('myRank', myRank);
+      store.commit('loadingStatus', false);
     } catch (err) {
       store.commit('error', err.toString());
       store.commit('loadingStatus', false);

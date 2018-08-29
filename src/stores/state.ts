@@ -8,5 +8,6 @@ export const rootState: RootState = {
   is_loading: true,
   error: null,
   current_quiz: null,
-  ranks: null
+  ranks: null,
+  my_rank: null
 };
