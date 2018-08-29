@@ -16,6 +16,7 @@ import RankAll from './rank/RankAll.vue';
 import RankMy from './rank/RankMy.vue';
 import { Action, State } from 'vuex-class';
 import { setTimeout } from 'timers';
+import { MyRank } from '@/types/common';
 
 @Component({
   components: {
@@ -33,6 +34,9 @@ export default class Rank extends Vue {
   @State('member_token')
   private memberToken: string;
 
+  @State('my_rank')
+  private myRank: MyRank;
+
   public mounted() {
     let self: Rank = this;
     setTimeout(() => {
@@ -47,6 +51,8 @@ export default class Rank extends Vue {
 
   public get isMyRankShow(): boolean {
     if (!this.memberToken) return false;
+    if (!this.myRank) return false;
+    if (!this.myRank.rank) return false;
     return true;
   }
 }

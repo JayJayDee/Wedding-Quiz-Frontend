@@ -56,13 +56,13 @@ export default class RankMy extends Vue {
   }
 
   public get grade(): string {
-    let prefix: string = 'rank ';
+    let prefix: string = 'Rank ';
     if (!this.myRank) return '';
-    if (this.percent >= 0 && this.percent < 20) return `${prefix} D`;
-    else if (this.percent >= 20 && this.percent < 40) return `${prefix} C`;
+    if (this.percent >= 0 && this.percent < 20) return `${prefix} S`;
+    else if (this.percent >= 20 && this.percent < 40) return `${prefix} A`;
     else if (this.percent >= 40 && this.percent < 60) return `${prefix} B`;
-    else if (this.percent >= 60 && this.percent < 80) return `${prefix} A`;
-    return `${prefix} S`;
+    else if (this.percent >= 60 && this.percent < 80) return `${prefix} C`;
+    return `${prefix} D`;
   }
 
   public get gradeDetail(): string {

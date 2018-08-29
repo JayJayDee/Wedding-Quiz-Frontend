@@ -18,6 +18,7 @@
           <p class="typo">이 슬 . 정진동</p>
           <p class="typo">2018.10.27 SAT 11:00 AM</p>
           <p class="typo">복정 밀리토피아 호텔</p>
+          <p class="typo">2F 아이리스홀</p>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -28,10 +29,20 @@
         <v-card-text>
           <h3 class="headline mb-0 typo">초대합니다</h3>
           <p></p>
-          <p class="typo">오래전의 인연이 저희를 연인으로 만들었습니다.</p>
-          <p class="typo">너무도 다른 우리지만, 사랑으로 하나되려 합니다.</p>
-          <p class="typo">귀한 걸음 하시어</p>
-          <p class="typo">저희를 축하해주시면 고맙겠습니다.</p>
+          <p class="typo">
+            헤어짐의 아쉬움이<br />
+            두사람의 발을 묶던 어스름을<br />
+            수도 없이 보내왔습니다.
+          </p>
+          <p class="typo">
+            이제 다시는 헤어지지 않으려고 합니다.<br />
+            행복하게 살겠습니다.
+          </p>
+          <p class="typo">
+            부디 와 주셔서<br />
+            두 사람의 새로운 출발을<br />
+            축하해 주시면 감사하겠습니다.
+          </p>
         </v-card-text>
       </v-card>
     </v-flex>
