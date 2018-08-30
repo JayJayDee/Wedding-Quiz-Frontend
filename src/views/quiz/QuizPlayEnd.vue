@@ -14,6 +14,15 @@
         <v-btn color="primary" flat>기록을 무시하고 재도전!</v-btn>
       </v-card-actions>
     </v-card>
+
+    <v-card block class="card-row">
+      <v-card-title>
+        <h3>내 결과</h3>
+      </v-card-title>
+      <v-card-text>
+        
+      </v-card-text>
+    </v-card>
   </v-layout>
 </template>
 
@@ -32,6 +41,17 @@ export default class QuizPlayEnd extends Vue {
   private get numAllQuizExpr(): string {
     if (!this.currentPlay) return '';
     return this.currentPlay.num_all_quiz.toString();
+  }
+
+  private get numCorrectExpr(): string {
+    if (!this.currentPlay) return '';
+    return this.currentPlay.num_correct.toString();
+  }
+
+  private get correctPercentExpr(): string {
+    if (!this.currentPlay) return '';
+    let percent: number = this.currentPlay.num_correct / this.currentPlay.num_all_quiz * 100;
+    return `${percent.toFixed(2)}%`;
   }
 }
 </script>
