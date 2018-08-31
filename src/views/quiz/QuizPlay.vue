@@ -31,6 +31,10 @@
       </v-card>
     </v-flex>
 
+    <v-flex xs12 class="card-row">
+      <status-indicator />
+    </v-flex>
+
     <solve-result-dialog />
   </v-layout>
 </template>
@@ -45,12 +49,14 @@ import { Quiz, QuizQuestion, QuizChoice, Play, PlayResult } from '@/types/common
 import QuizQuestionRow from '@/components/QuizQuestionRow.vue';
 import QuizChoiceBtn from '@/components/QuizChoiceBtn.vue';
 import SolveResultDialog from '@/components/SolveResultDialog.vue';
+import StatusIndicator from '@/components/StatusIndicator.vue';
 
 @Component({
   components: {
     QuizQuestionRow,
     QuizChoiceBtn,
-    SolveResultDialog
+    SolveResultDialog,
+    StatusIndicator
   }
 })
 export default class QuizPlay extends Vue {
@@ -111,3 +117,9 @@ export default class QuizPlay extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.card-row {
+  margin-top: 20px;
+}
+</style>

@@ -8,7 +8,8 @@ export function cvtToPlay(rawElem: any): Play {
     num_correct: rawElem.num_correct,
     num_incorrect: rawElem.num_incorrect,
     num_played: rawElem.num_played,
-    is_ended: rawElem.is_ended
+    is_ended: rawElem.is_ended,
+    score_sum: rawElem.score_sum
   };
   return play;
 }

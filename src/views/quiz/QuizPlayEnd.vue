@@ -17,10 +17,10 @@
 
     <v-card block class="card-row">
       <v-card-title>
-        <h3>내 결과</h3>
+        <h3>내 점수</h3>
       </v-card-title>
       <v-card-text>
-        
+        현재 {{ currentPlayedExpr }}번째문제 
       </v-card-text>
     </v-card>
   </v-layout>
@@ -32,13 +32,15 @@ import Component from 'vue-class-component';
 import { Play } from '@/types';
 import { State } from 'vuex-class';
 
+import { KorLexicalUtil } from '@/utils';
+
 @Component
 export default class QuizPlayEnd extends Vue {
   
   @State('play')
   private currentPlay: Play;
 
-  private get numAllQuizExpr(): string {
+  private get numAllQuizExpr():   string {
     if (!this.currentPlay) return '';
     return this.currentPlay.num_all_quiz.toString();
   }
@@ -52,6 +54,11 @@ export default class QuizPlayEnd extends Vue {
     if (!this.currentPlay) return '';
     let percent: number = this.currentPlay.num_correct / this.currentPlay.num_all_quiz * 100;
     return `${percent.toFixed(2)}%`;
+  }
+
+  private get currentPlayedExpr(): string {
+    if (!this.currentPlay) return '';
+    return '';
   }
 }
 </script>

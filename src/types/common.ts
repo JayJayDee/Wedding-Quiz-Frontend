@@ -10,6 +10,7 @@ export interface Play {
   num_correct: number;
   num_incorrect: number;
   is_ended: boolean;
+  score_sum: number;
 }
 export interface PlayResult {
   is_win: boolean;
