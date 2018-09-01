@@ -1,10 +1,8 @@
 
 <template>
   <v-card block>
-    <v-card-title>
-      <h3>현재 상태</h3>
-    </v-card-title>
     <v-card-text> 
+      <p>{{ currentScoreExpr }}</p>
       <p v-if="correct > 0">{{ currentCorrectStatus }}</p>
       <p v-if="incorrect > 0">{{ currentIncorrectStatus }}</p>
     </v-card-text>
@@ -46,7 +44,7 @@ export default class StatusIndicator extends Vue {
 
   private get currentScoreExpr(): string {
     if (!this.currentPlay) return '';
-    return '현재 60점 획득!';
+    return `${this.currentPlay.score_sum}`;
   }
 }
 </script>
