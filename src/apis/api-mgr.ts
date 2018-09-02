@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 import * as _ from 'lodash';
 
 import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz, ReqSolveQuiz, ResSolveQuiz, ReqRanks, ReqGetMyRank, ResGetMyRank } from "@/apis";
-import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult, cvtToRankElement, cvtToMyRank } from '@/apis/converters';
+import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult, cvtToRankElement, cvtToMyRank, cvtToQuizResult } from '@/apis/converters';
 import { RankElement, MyRank } from '@/types/common';
 
 const baseUrl = 'http://api.weddquiz.com';
@@ -43,7 +43,8 @@ export const ApiManager = {
 
     let resp: ResGetQuiz = {
       quiz: null,
-      play: cvtToPlay(rawResp.play)
+      play: cvtToPlay(rawResp.play),
+      results: _.map(rawResp.results, cvtToQuizResult)
     };
 
     if (rawResp.quiz) {

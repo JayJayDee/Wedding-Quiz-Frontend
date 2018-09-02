@@ -1,5 +1,5 @@
 import { Play } from '@/types';
-import { QuizQuestion, QuizQuestionType, QuizChoice, Member, PlayResult, RankElement } from '@/types/common';
+import { QuizQuestion, QuizQuestionType, QuizChoice, Member, PlayResult, RankElement, QuizResult } from '@/types/common';
 import { ResGetMyRank } from '@/apis';
 
 export function cvtToPlay(rawElem: any): Play {
@@ -67,6 +67,15 @@ export function cvtToMyRank(raw: any): ResGetMyRank {
   let result: ResGetMyRank = {
     rank: raw.rank,
     challengers: raw.challengers
+  };
+  return result;
+}
+
+export function cvtToQuizResult(raw: any): QuizResult {
+  let result: QuizResult = {
+    quiz_no: raw.quiz_no,
+    is_played: raw.is_played,
+    is_win: raw.is_win
   };
   return result;
 }

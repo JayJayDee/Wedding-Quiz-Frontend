@@ -1,5 +1,5 @@
 import { Member, Play } from '@/types';
-import { Quiz, PlayResult, MyRank } from '@/types/common';
+import { Quiz, PlayResult, MyRank, QuizResult } from '@/types/common';
 
 
 export interface ReqMemberGet {
@@ -24,6 +24,7 @@ export interface ReqGetQuiz {
 export interface ResGetQuiz {
   quiz: Quiz | null;
   play: Play;
+  results: QuizResult[];
 }
 
 export interface ReqSolveQuiz {

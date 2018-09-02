@@ -74,6 +74,7 @@ export const rootActions = {
       });
       store.commit('currentQuiz', resp.quiz);
       store.commit('memberPlay', resp.play);
+      store.commit('results', resp.results);
       store.commit('loadingStatus', false);
     } catch (err) {
       store.commit('error', err.toString());

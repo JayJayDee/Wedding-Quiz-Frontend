@@ -50,3 +50,9 @@ export interface MyRank {
   rank: number;
   challengers: number;
 }
+
+export interface QuizResult {
+  quiz_no: number;
+  is_played: boolean;
+  is_win: boolean;
+}

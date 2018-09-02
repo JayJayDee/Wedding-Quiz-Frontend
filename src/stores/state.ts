@@ -9,5 +9,6 @@ export const rootState: RootState = {
   error: null,
   current_quiz: null,
   ranks: null,
-  my_rank: null
+  my_rank: null,
+  results: null
 };
