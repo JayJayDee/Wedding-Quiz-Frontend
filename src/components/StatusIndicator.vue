@@ -2,9 +2,13 @@
 <template>
   <v-card block>
     <v-card-text> 
-      <p>{{ currentScoreExpr }}</p>
-      <p v-if="correct > 0">{{ currentCorrectStatus }}</p>
-      <p v-if="incorrect > 0">{{ currentIncorrectStatus }}</p>
+      <span>
+        <quiz-dot 
+          v-for="elem in results"
+          :key="elem.quiz_no"
+          :result="elem" />
+      </span>
+      <p>현재 80점 획득</p>
     </v-card-text>
   </v-card>
 </template>
@@ -14,33 +18,21 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { State } from 'vuex-class';
 
-import { Play } from '@/types/common';
+import { Play, QuizResult } from '@/types/common';
+import QuizDot from '@/components/QuizDot.vue';
 
-@Component
+@Component({
+  components: {
+    QuizDot
+  }
+})
 export default class StatusIndicator extends Vue {
 
   @State('play')
   private currentPlay: Play;
 
-  private get correct(): number {
-    if (!this.currentPlay) return 0;
-    return this.currentPlay.num_correct
-  }
-  
-  private get incorrect(): number {
-    if (!this.currentPlay) return 0;
-    return this.currentPlay.num_incorrect;
-  }
-
-  private get currentCorrectStatus(): string {
-    if (!this.currentPlay) return '';
-    return `${this.currentPlay.num_correct} 문제를 맞췄습니다.`;
-  }
-
-  private get currentIncorrectStatus(): string {
-    if (!this.currentPlay) return '';
-    return `${this.currentPlay.num_incorrect} 문제를 틀렸습니다.`;
-  }
+  @State('results')
+  private results: QuizResult[];
 
   private get currentScoreExpr(): string {
     if (!this.currentPlay) return '';
