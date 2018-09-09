@@ -52,6 +52,7 @@
         color="transparent">
         <v-card-text>
           <h3 class="headline mb-0 typo">사진 갤러리 영역</h3>
+          <vue-picture-swipe :items="images"></vue-picture-swipe>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -92,8 +93,24 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
-export default class Home extends Vue {}
+import VuePictureSwipe,{ GalleryItem } from 'vue-picture-swipe';
+
+@Component({
+  components: {
+    VuePictureSwipe
+  }
+})
+export default class Home extends Vue {
+
+  private get images(): GalleryItem[] {
+    return [
+      {
+        src: require('../assets/gallery/001_orig.jpg'),
+        thumbnail: require('../assets/gallery/001_thumb.jpg')
+      }
+    ];
+  }
+}
 </script>
 
 <style scoped>
