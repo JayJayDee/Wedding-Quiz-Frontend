@@ -51,7 +51,7 @@
       <v-card
         color="transparent">
         <v-card-text>
-          <h3 class="headline mb-0 typo">사진 갤러리 영역</h3>
+          <h3 class="headline mb-0 typo">사진 갤러리</h3>
           <vue-picture-swipe :items="images"></vue-picture-swipe>
         </v-card-text>
       </v-card>
@@ -106,7 +106,27 @@ export default class Home extends Vue {
     return [
       {
         src: require('../assets/gallery/001_orig.jpg'),
-        thumbnail: require('../assets/gallery/001_thumb.jpg')
+        thumbnail: require('../assets/gallery/001_thumb.jpg'),
+        w: 1944,
+        h: 1944
+      },
+      {
+        src: require('../assets/gallery/002_orig.jpg'),
+        thumbnail: require('../assets/gallery/002_thumb.jpg'),
+        w: 2846,
+        h: 2846
+      },
+      {
+        src: require('../assets/gallery/003_orig.jpg'),
+        thumbnail: require('../assets/gallery/003_thumb.jpg'),
+        w: 2810,
+        h: 2810
+      },
+      {
+        src: require('../assets/gallery/004_orig.jpg'),
+        thumbnail: require('../assets/gallery/004_thumb.jpg'),
+        w: 2000,
+        h: 2000
       }
     ];
   }

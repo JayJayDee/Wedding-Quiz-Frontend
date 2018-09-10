@@ -21,17 +21,17 @@
         :value="isNavShow"
         absolute
         color="white">
-        <v-btn color="teal" flat value="home" to="/">
+        <v-btn color="pink" flat value="home" to="/">
           <span>Wedding</span>
           <v-icon>favorite_border</v-icon>
         </v-btn>
 
-        <v-btn color="teal" flat value="quiz" to="/quiz">
+        <v-btn color="pink" flat value="quiz" to="/quiz">
           <span>Quiz</span>
           <v-icon>help_outline</v-icon>
         </v-btn>
 
-        <v-btn color="teal" flat value="rank" to="/rank">
+        <v-btn color="pink" flat value="rank" to="/rank">
           <span>Rank</span>
           <v-icon>people_outline</v-icon>
         </v-btn>
