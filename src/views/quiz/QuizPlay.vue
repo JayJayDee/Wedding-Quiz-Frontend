@@ -28,6 +28,7 @@
             :content="choice.content"
             v-on:choice_clicked="onChoose" />
         </v-card-text>
+        
       </v-card>
     </v-flex>
 

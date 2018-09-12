@@ -21,9 +21,18 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { QuizResult } from '@/types/common';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(faCheckCircle);
+
 @Component({
   props: {
     result: Object
+  },
+  components: {
+
   }
 })
 export default class QuizDot extends Vue {
