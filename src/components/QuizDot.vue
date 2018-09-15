@@ -48,7 +48,7 @@ export default class QuizDot extends Vue {
   }
 
   private get isCurrent(): boolean {
-    if (!this.currentPlay || !this.index) return false;
+    if (!this.currentPlay || this.index === undefined || this.index === null) return false;
     if (this.index === this.currentPlay.num_played) return true;
     return false;
   }
