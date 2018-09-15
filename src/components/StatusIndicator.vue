@@ -8,7 +8,6 @@
           :key="elem.quiz_no"
           :result="elem" />
       </span>
-      <p>현재 80점 획득</p>
     </v-card-text>
   </v-card>
 </template>
