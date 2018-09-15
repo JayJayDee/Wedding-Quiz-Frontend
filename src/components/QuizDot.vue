@@ -2,36 +2,30 @@
 <template>
   <span v-if="result">
     <font-awesome-icon 
-      class="quiz-dot quiz-correct"
-      v-if="correctShow"
-      icon="check-circle"/>
-    <font-awesome-icon 
-      class="quiz-dot quiz-incorrect"
-      v-if="incorrectShow"
-      icon="times-circle" />
-    <font-awesome-icon 
-      class="quiz-dot quiz-unsolved"
-      v-if="notPlayedShow"
-      icon="question" />
+      class="quiz-dot"
+      v-bind:class="{current: isCurrent, 'not-current': !isCurrent}"
+      :icon="iconName"/>
   </span>  
 </template>
 
 <script lang="ts"> 
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { QuizResult } from '@/types/common';
+import { QuizResult, Play } from '@/types/common';
 
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
-import { faCheckCircle, faQuestion, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { State } from 'vuex-class';
 
 library.add(faCheckCircle);
-library.add(faQuestion);
+library.add(faQuestionCircle);
 library.add(faTimesCircle);
 
 @Component({
   props: {
-    result: Object
+    result: Object,
+    index: Number
   },
   components: {
     FontAwesomeIcon
@@ -41,42 +35,37 @@ export default class QuizDot extends Vue {
   
   private result: QuizResult;
 
-  public get correctShow(): boolean {
-    if (!this.result) return false;
-    if (this.result.is_played === false) return false;
-    if (this.result.is_win === false) return false;
-    return true;
+  private index: number;
+
+  @State('play')
+  private currentPlay: Play;
+
+  private get iconName(): string {
+    if (!this.result) return '';
+    if (this.result.is_played === false) return 'question-circle';
+    if (this.result.is_win === true) return 'check-circle';
+    return 'times-circle';
   }
 
-  public get incorrectShow(): boolean {
-    if (!this.result) return false;
-    if (this.result.is_played === false) return false;
-    if (this.result.is_win === true) return false;
-    return true;
+  private get isCurrent(): boolean {
+    if (!this.currentPlay || !this.index) return false;
+    if (this.index === this.currentPlay.num_played) return true;
+    return false;
   }
-
-  public get notPlayedShow(): boolean {
-    if (!this.result) return false;
-    if (this.result.is_played === true) return false;
-    return true;
-  }
-}
+} 
 </script>
 
 <style scoped>
 .quiz-dot {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   margin-right: 5px;
   margin-left: 5px;
 }
-.quiz-unsolved {
-  color: #777777;
+.not-current {
+  color: #999;
 }
-.quiz-correct {
-  color: #777777;
-}
-.quiz-incorrect {
-  color: #777777;
+.current {
+  color: #2196f3;
 }
 </style>

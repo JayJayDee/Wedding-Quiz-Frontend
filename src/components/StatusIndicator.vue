@@ -1,11 +1,15 @@
 
 <template>
-  <v-card block>
+  <v-card 
+    color="transparent"
+    class="transparent"
+    block>
     <v-card-text> 
       <span>
         <quiz-dot 
-          v-for="elem in results"
+          v-for="(elem, index) in results"
           :key="elem.quiz_no"
+          :index="index"
           :result="elem" />
       </span>
     </v-card-text>
@@ -24,7 +28,7 @@ import QuizDot from '@/components/QuizDot.vue';
   components: {
     QuizDot
   }
-})
+}) 
 export default class StatusIndicator extends Vue {
 
   @State('play')
@@ -41,5 +45,8 @@ export default class StatusIndicator extends Vue {
 </script>
 
 <style scoped>
-
+.v-card.transparent {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 </style>
