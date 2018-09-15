@@ -1,18 +1,18 @@
 
 <template>
   <span v-if="result">
-    <img 
-      class="quiz-dot"
+    <font-awesome-icon 
+      class="quiz-dot quiz-correct"
       v-if="correctShow"
-      :src="require('../assets/icon_correct.png')" />
-    <img 
-      class="quiz-dot"
+      icon="check-circle"/>
+    <font-awesome-icon 
+      class="quiz-dot quiz-incorrect"
       v-if="incorrectShow"
-      :src="require('../assets/icon_incorrect.png')" />  
-    <img
-      class="quiz-dot"
+      icon="times-circle" />
+    <font-awesome-icon 
+      class="quiz-dot quiz-unsolved"
       v-if="notPlayedShow"
-      :src="require('../assets/not_played.png')" />
+      icon="question" />
   </span>  
 </template>
 
@@ -21,18 +21,20 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { QuizResult } from '@/types/common';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { library, icon } from '@fortawesome/fontawesome-svg-core';
+import { faCheckCircle, faQuestion, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 library.add(faCheckCircle);
+library.add(faQuestion);
+library.add(faTimesCircle);
 
 @Component({
   props: {
     result: Object
   },
   components: {
-
+    FontAwesomeIcon
   }
 })
 export default class QuizDot extends Vue {
@@ -63,9 +65,18 @@ export default class QuizDot extends Vue {
 
 <style scoped>
 .quiz-dot {
-  width: 30px;
-  height: 30px;
-  margin-right: 2px;
-  margin-left: 2px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.quiz-unsolved {
+  color: #777777;
+}
+.quiz-correct {
+  color: #777777;
+}
+.quiz-incorrect {
+  color: #777777;
 }
 </style>

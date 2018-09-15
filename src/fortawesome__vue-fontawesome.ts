@@ -1,6 +1,6 @@
 
 declare module '@fortawesome/*' {
-  interface FontAwesomeIcon {
-
+  import Vue from 'vue';
+  class FontAwesomeIcon extends Vue {
   }
 }
