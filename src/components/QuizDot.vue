@@ -2,15 +2,15 @@
 <template>
   <span v-if="result">
     <font-awesome-icon 
-      class="quiz-dot quiz-correct"
+      :class="className"
       v-if="correctShow"
       icon="check-circle"/>
     <font-awesome-icon 
-      class="quiz-dot quiz-incorrect"
+      :class="className"
       v-if="incorrectShow"
       icon="times-circle" />
     <font-awesome-icon 
-      class="quiz-dot quiz-unsolved"
+      :class="className"
       v-if="notPlayedShow"
       icon="question" />
   </span>  
@@ -19,11 +19,12 @@
 <script lang="ts"> 
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { QuizResult } from '@/types/common';
+import { QuizResult, Play } from '@/types/common';
 
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
 import { faCheckCircle, faQuestion, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { State } from 'vuex-class';
 
 library.add(faCheckCircle);
 library.add(faQuestion);
@@ -31,7 +32,8 @@ library.add(faTimesCircle);
 
 @Component({
   props: {
-    result: Object
+    result: Object,
+    index: Number
   },
   components: {
     FontAwesomeIcon
@@ -40,6 +42,11 @@ library.add(faTimesCircle);
 export default class QuizDot extends Vue {
   
   private result: QuizResult;
+
+  private index: number;
+
+  @State('play')
+  private currentPlay: Play;
 
   public get correctShow(): boolean {
     if (!this.result) return false;
@@ -60,6 +67,17 @@ export default class QuizDot extends Vue {
     if (this.result.is_played === true) return false;
     return true;
   }
+
+  private get isCurrent(): boolean {
+    if (!this.currentPlay || !this.index) return false;
+    if (this.index === this.currentPlay.num_played - 1) return true;
+    return false;
+  }
+
+  private get className(): string {
+    if (this.isCurrent === true) return 'quiz-dot current';
+    return 'quiz-dot not-current';
+  }
 }
 </script>
 
@@ -70,13 +88,10 @@ export default class QuizDot extends Vue {
   margin-right: 5px;
   margin-left: 5px;
 }
-.quiz-unsolved {
+.not-current {
   color: #777777;
 }
-.quiz-correct {
-  color: #777777;
-}
-.quiz-incorrect {
-  color: #777777;
+.current {
+  color: #2196f3;
 }
 </style>
