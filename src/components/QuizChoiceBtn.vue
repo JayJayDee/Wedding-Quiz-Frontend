@@ -38,7 +38,8 @@ export default class QuizChoiceBtn extends Vue {
 <style scoped>
 .choice-btn {
   margin-top: 10px;
-  padding: 10px;
+  padding-top: 7px;
+  padding-bottom: 10px;
   font-size: 12pt;
 }
 </style>
