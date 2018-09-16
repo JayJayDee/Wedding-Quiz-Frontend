@@ -11,16 +11,32 @@
       </v-card-text>
       <v-card-actions>
         <v-btn color="primary" href="/#/rank" flat>전체 순위 보기</v-btn>
-        <v-btn color="primary" flat>기록을 무시하고 재도전!</v-btn>
       </v-card-actions>
     </v-card>
 
     <v-card block class="card-row">
       <v-card-title>
-        <h3>내 점수</h3>
+        <h3>내 플레이 결과</h3>
       </v-card-title>
       <v-card-text>
-        현재 {{ currentPlayedExpr }}번째문제 
+        <v-layout row wrap>
+          <v-flex xs6>
+            <span class="result-title">{{ gainScoreExpr }}점 </span>
+            <p class="result-text">총 획득 점수</p>
+          </v-flex>
+          <v-flex xs6>
+            <span class="result-title">{{ numAllQuizExpr }}개 </span>
+            <p class="result-text">플레이한 퀴즈 갯수</p>
+          </v-flex>
+          <v-flex xs6>
+            <span class="result-title">{{ numCorrectExpr }}개 </span>
+            <p class="result-text">맞춘 퀴즈 갯수</p>
+          </v-flex>
+          <v-flex xs6>
+            <span class="result-title">{{ correctPercentExpr }}</span>
+            <p class="result-text">정답율</p>
+          </v-flex>
+        </v-layout>
       </v-card-text>
     </v-card>
   </v-layout>
@@ -60,6 +76,11 @@ export default class QuizPlayEnd extends Vue {
     if (!this.currentPlay) return '';
     return '';
   }
+
+  private get gainScoreExpr(): string {
+    if (!this.currentPlay) return '';
+    return this.currentPlay.score_sum.toString();
+  }
 }
 </script>
 
@@ -67,8 +88,13 @@ export default class QuizPlayEnd extends Vue {
 .text-sm-left.text-left {
   text-align: left;
 }
-
 .card-row {
   margin-top: 10px;
+}
+.result-title {
+  font-size: 15pt;
+}
+.result-text {
+  color: #666666;
 }
 </style>
