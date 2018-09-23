@@ -10,7 +10,7 @@ let delayLittle = function(): Promise<any> {
   return new Promise((resolve: Function, reject: Function) => {
     setTimeout(() => {
       return resolve();
-    }, 500);
+    }, 300);
   });
 }
 
