@@ -1,5 +1,5 @@
 
-import { ResMemberGet, ReqMemberCreate, ResMemberCreate, ResGetQuiz, ResSolveQuiz } from '@/apis';
+import { ResMemberGet, ReqMemberCreate, ResMemberCreate, ResGetQuiz, ResSolveQuiz, QuizConfig } from '@/apis';
 import { ActionContext } from '../../node_modules/vuex';
 import { RootState, TOKEN_KEY_NAME } from '@/stores';
 import { ApiManager } from '@/apis/api-mgr';
@@ -130,6 +130,20 @@ export const rootActions = {
         member_token: memberToken
       });
       store.commit('myRank', myRank);
+      store.commit('loadingStatus', false);
+    } catch (err) {
+      store.commit('error', err.toString());
+      store.commit('loadingStatus', false);
+    }
+  },
+
+  async queryGlobalConfigs(store: ActionContext<RootState, any>) {
+    store.commit('loadingStatus', true);
+    await delayLittle();
+
+    try {
+      let configs: QuizConfig = await ApiManager.requestConfigs();
+      store.commit('globalConfigs', configs);
       store.commit('loadingStatus', false);
     } catch (err) {
       store.commit('error', err.toString());

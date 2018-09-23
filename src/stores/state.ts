@@ -10,5 +10,6 @@ export const rootState: RootState = {
   current_quiz: null,
   ranks: null,
   my_rank: null,
-  results: null
+  results: null,
+  global_configs: null
 };
