@@ -2,13 +2,21 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 import * as _ from 'lodash';
 
-import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz, ReqSolveQuiz, ResSolveQuiz, ReqRanks, ReqGetMyRank, ResGetMyRank } from "@/apis";
+import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz, ReqSolveQuiz, ResSolveQuiz, ReqRanks, ReqGetMyRank, ResGetMyRank, QuizConfig } from "@/apis";
 import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult, cvtToRankElement, cvtToMyRank, cvtToQuizResult } from '@/apis/converters';
 import { RankElement, MyRank } from '@/types/common';
 
 const baseUrl = 'http://api.weddquiz.com';
 
 export const ApiManager = {
+
+  async requestConfigs(): Promise<QuizConfig> {
+    let rawResp: any = await this.requestViaAxios({
+      url: `${baseUrl}/misc/configs`,
+      method: 'get'
+    });
+    return rawResp as QuizConfig;
+  },
 
   async requestGetMember(req: ReqMemberGet): Promise<ResMemberGet> {
     let rawResp: any = await this.requestViaAxios({
