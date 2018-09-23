@@ -1,6 +1,7 @@
 import { RootState } from '@/stores';
 import { Member, Play } from '@/types';
 import { Quiz, PlayResult, RankElement, MyRank, QuizResult } from '@/types/common';
+import { QuizConfig } from '@/apis';
 
 export const rootMutations = {
   memberToken(state: RootState, memberToken: string) {
@@ -41,5 +42,9 @@ export const rootMutations = {
 
   results(state: RootState, results: QuizResult[]) {
     state.results = results;
+  },
+
+  globalConfigs(state: RootState, configs: QuizConfig) {
+    state.global_configs = configs; 
   }
 };

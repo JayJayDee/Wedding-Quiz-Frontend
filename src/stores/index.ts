@@ -6,6 +6,7 @@ import { rootState } from '@/stores/state';
 import { rootMutations } from '@/stores/mutations';
 import { rootActions } from '@/stores/actions';
 import { Quiz, PlayResult, RankElement, MyRank, QuizResult } from '@/types/common';
+import { QuizConfig } from '@/apis';
 
 export interface RootState {
   member_token: string | null;
@@ -18,6 +19,7 @@ export interface RootState {
   ranks: RankElement[] | null;
   my_rank: MyRank | null;
   results: QuizResult[] | null;
+  global_configs: QuizConfig | null;
 }
 
 export const TOKEN_KEY_NAME = 'wedd-quiz-token';
