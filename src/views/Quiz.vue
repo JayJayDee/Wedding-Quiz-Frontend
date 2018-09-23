@@ -14,6 +14,8 @@
       <!-- 모든 퀴즈 플레이 완료 -->
       <quiz-play-end
         v-if="memberJoined && isAllQuizPlayed === true" />
+
+      <!-- 현재 설정이 막혀 있음 -->
     </v-layout>
   </v-container>
 </template>

@@ -43,6 +43,8 @@ export interface ReqGetMyRank {
 }
 export interface ResGetMyRank extends MyRank {}
 
+export type QuizConfig = {[key: string]: string | boolean | number};
+
 export class ApiRequestError extends Error {
   private msg: string;
 
