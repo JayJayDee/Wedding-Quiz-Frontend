@@ -62,6 +62,8 @@
         color="transparent">
         <v-card-text>
           <h3 class="headline mb-0 typo">결혼 사진첩</h3>
+          <p></p>
+          <img :src="require('../assets/home/photo-header.png')" style="width:100%;" />
           <vue-picture-swipe :items="images"></vue-picture-swipe>
         </v-card-text>
       </v-card>
