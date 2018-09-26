@@ -3,23 +3,32 @@
     <v-flex xs12>
       <v-card
         color="transparent">
+        <!-- <img :src="require('../assets/home/header.png')" style="width:100%;" /> -->
         <v-card-media
-          :src="require('../assets/main_top_bg.jpg')"
-          height="200px"></v-card-media>
+          :src="require('../assets/home/header.png')"
+          height="150px"></v-card-media>
+        <center>
+          <img :src="require('../assets/home/welcome-panel.png')" style="width: 100%;" />
+        </center>
         <v-card-text class="margin-section">
           <h3 class="headline mb-0 typo">우리, 결혼합니다.</h3>
           <p></p>
-          <p class="typo">서울에서 온 미대생. 대구에서 온 공대생.</p>
-          <p class="typo">달라도 너무 다른 우리.</p>
-          <p class="typo">이제, 함께 하려 합니다.</p>
+          <p class="typo">절대로 결혼은 안 하겠다던</p>
+          <p class="typo">두 사람이 만나</p>
+          <p class="typo">3년의 연애 끝에</p>
+          <p class="typo">결국 결혼합니다.</p>
         </v-card-text>
-        <hr />
+
+        <img :src="require('../assets/home/top-seperator.png')" style="width: 100%;" />
+        <!-- <hr /> -->
         <v-card-text>
-          <p class="typo">이 슬 . 정진동</p>
-          <p class="typo">2018.10.27 SAT 11:00 AM</p>
-          <p class="typo">복정 밀리토피아 호텔</p>
+          <p class="typo t2">이 슬 . 정진동</p>
+          <p class="typo">2018.10.27 토요일 오전 11시</p>
+          <p class="typo">밀리토피아 호텔</p>
           <p class="typo">2F 아이리스홀</p>
         </v-card-text>
+
+        <img :src="require('../assets/home/middle-seperator.png')" />        
       </v-card>
     </v-flex>
 
@@ -43,6 +52,7 @@
             두 사람의 새로운 출발을<br />
             축하해 주시면 감사하겠습니다.
           </p>
+          <img :src="require('../assets/home/middle-seperator-2.png')" />
         </v-card-text>
       </v-card>
     </v-flex>
@@ -51,7 +61,7 @@
       <v-card
         color="transparent">
         <v-card-text>
-          <h3 class="headline mb-0 typo">사진 갤러리</h3>
+          <h3 class="headline mb-0 typo">결혼 사진첩</h3>
           <vue-picture-swipe :items="images"></vue-picture-swipe>
         </v-card-text>
       </v-card>
@@ -75,6 +85,23 @@
       </v-card>
     </v-flex>
 
+    <v-flex class="margin-section" xs12>
+      <v-card
+        color="transparent">
+        <v-card-text>
+          <h3 class="headline mb-0 typo">웨딩 퀴즈</h3>
+          <p></p>
+          <p class="typo">두 사람의 이야기를 들려드립니다.</p>
+          <p class="typo">쉽고 간단힌 퀴즈로 신랑 신부를 알아보세요.</p>
+          <p class="typo">퀴즈의 승리자에게는 소정의 경품이 준비되어 있습니다.</p>
+
+          
+          <v-btn color="default" to="/quiz">퀴즈 풀러 가기</v-btn>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
+    <!-- 
     <v-flex xs12 class="row margin-section">
       <v-card>
         <v-card-title>
@@ -88,6 +115,7 @@
         </v-card-text>
       </v-card>
     </v-flex>
+    -->
   </v-container>
 </template>
 
@@ -105,28 +133,40 @@ export default class Home extends Vue {
   private get images(): GalleryItem[] {
     return [
       {
-        src: require('../assets/gallery/001_orig.jpg'),
-        thumbnail: require('../assets/gallery/001_thumb.jpg'),
-        w: 1944,
-        h: 1944
+        src: require('../assets/gallery/0001.jpg'),
+        thumbnail: require('../assets/gallery/0001_thumb.jpg'),
+        w: 1200,
+        h: 1200
       },
       {
-        src: require('../assets/gallery/002_orig.jpg'),
-        thumbnail: require('../assets/gallery/002_thumb.jpg'),
-        w: 2846,
-        h: 2846
+        src: require('../assets/gallery/0002.jpg'),
+        thumbnail: require('../assets/gallery/0002_thumb.jpg'),
+        w: 1200,
+        h: 1200
       },
       {
-        src: require('../assets/gallery/003_orig.jpg'),
-        thumbnail: require('../assets/gallery/003_thumb.jpg'),
-        w: 2810,
-        h: 2810
+        src: require('../assets/gallery/0003.jpg'),
+        thumbnail: require('../assets/gallery/0003_thumb.jpg'),
+        w: 1184,
+        h: 1184 
       },
       {
-        src: require('../assets/gallery/004_orig.jpg'),
-        thumbnail: require('../assets/gallery/004_thumb.jpg'),
-        w: 2000,
-        h: 2000
+        src: require('../assets/gallery/0004.jpg'),
+        thumbnail: require('../assets/gallery/0004_thumb.jpg'),
+        w: 1200,
+        h: 1200
+      },
+      {
+        src: require('../assets/gallery/0005.jpg'),
+        thumbnail: require('../assets/gallery/0005_thumb.jpg'),
+        w: 1200,
+        h: 1200
+      },
+      {
+        src: require('../assets/gallery/0006.jpg'),
+        thumbnail: require('../assets/gallery/0006_thumb.jpg'),
+        w: 1200,
+        h: 1200
       }
     ];
   }
@@ -144,9 +184,15 @@ export default class Home extends Vue {
 }
 .typo {
   font-family: 'Nanum Myeongjo';
+  color: #372b05;
+}
+.typo.t2 {
+  font-size: 12pt;
+  font-weight: bold;
 }
 h3.typo {
   font-family: 'Nanum Myeongjo' !important;
+  color: #372b05;
 }
 hr {
   width: 50%;
