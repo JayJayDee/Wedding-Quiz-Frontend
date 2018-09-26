@@ -8,6 +8,12 @@
           :src="require('../assets/home/header.png')"
           height="150px"></v-card-media>
         <img :src="require('../assets/home/welcome-panel.png')" style="width: 100%;" />
+        <h3 class="headline mb-0 typo">우리, 결혼합니다.</h3>
+        <p></p>
+        <p class="typo">절대로 결혼은 안 하겠다던</p>
+        <p class="typo">두 사람이 만나</p>
+        <p class="typo">3년의 연애 끝에</p>
+        <p class="typo">결국 결혼합니다.</p>
       </v-card>
     </v-container>
     <v-container grid-list-md>
@@ -15,12 +21,7 @@
         <v-card
           color="transparent">
           <v-card-text class="margin-section">
-            <h3 class="headline mb-0 typo">우리, 결혼합니다.</h3>
-            <p></p>
-            <p class="typo">절대로 결혼은 안 하겠다던</p>
-            <p class="typo">두 사람이 만나</p>
-            <p class="typo">3년의 연애 끝에</p>
-            <p class="typo">결국 결혼합니다.</p>
+            
           </v-card-text>
 
           <img :src="require('../assets/home/top-seperator.png')" style="width: 100%;" />
