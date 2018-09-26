@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background-home">
     <v-container grid-list-md class="pa-0">
       <v-card 
         flat="true"
@@ -196,5 +196,8 @@ hr {
 }
 .margin-section {
   margin-top: 50px;
+}
+.background-home {
+  background-color: #fff8e5;
 }
 </style>
