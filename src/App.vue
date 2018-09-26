@@ -59,7 +59,7 @@ export default class App extends Vue {
   private memberToken: string | null;
 
   private prevY: number | null;
-  private isNavShow: boolean;
+  //private isNavShow: boolean;
   private nav: string = '';
 
   @State('is_loading')
@@ -71,7 +71,7 @@ export default class App extends Vue {
   constructor() {
     super();
     this.prevY = null;
-    this.isNavShow = true;
+    //this.isNavShow = true;
   }
 
   private getCurrentNav(): string {
@@ -81,16 +81,20 @@ export default class App extends Vue {
     return 'home';
   }
 
-  public onScroll(e: any) {
-    let currentY: number = window.pageYOffset || document.documentElement.scrollTop;
-    if (this.prevY === null) return this.prevY = currentY;
-    if (this.prevY < currentY) {
-      this.isNavShow = false;
-    } else {
-      this.isNavShow = true;
-    }
-    this.prevY = currentY;
+  private get isNavShow(): boolean {
+    return true;
   }
+
+  // public onScroll(e: any) {
+  //   let currentY: number = window.pageYOffset || document.documentElement.scrollTop;
+  //   if (this.prevY === null) return this.prevY = currentY;
+  //   if (this.prevY < currentY) {
+  //     this.isNavShow = false;
+  //   } else {
+  //     this.isNavShow = true;
+  //   }
+  //   this.prevY = currentY;
+  // }
 
   public get showTopMenuBar(): boolean {
     if (this.nav === 'quiz' || this.nav === 'rank') return true;
