@@ -1,30 +1,25 @@
 <template>
-  <div class="background-home">
-    <v-container grid-list-md class="pa-0">
+  <v-container grid-list-md class="pa-0 background-home">
+    <v-layout grid-list-md class="pa-0" column="1">
       <v-card 
-        flat="true"
         color="transparent">
-        <v-card-media
-          :src="require('../assets/home/header.png')"
-          height="150px"></v-card-media>
-        <img :src="require('../assets/home/welcome-panel.png')" style="width: 100%;" />
+        <div class="header-image"></div>
+        <div class="title-image"></div>
+        <h3 class="headline mb-0 typo">우리, 결혼합니다.</h3>
+        <p></p>
+        <p class="typo">절대로 결혼은 안 하겠다던</p>
+        <p class="typo">두 사람이 만나</p>
+        <p class="typo">3년의 연애 끝에</p>
+        <p class="typo">결국 결혼합니다.</p>
       </v-card>
-    </v-container>
-    <v-container grid-list-md>
+    </v-layout>
+    <v-layout grid-list-md column="1">
       <v-flex xs12>
         <v-card
           color="transparent">
-          <v-card-text class="margin-section">
-            <h3 class="headline mb-0 typo">우리, 결혼합니다.</h3>
-            <p></p>
-            <p class="typo">절대로 결혼은 안 하겠다던</p>
-            <p class="typo">두 사람이 만나</p>
-            <p class="typo">3년의 연애 끝에</p>
-            <p class="typo">결국 결혼합니다.</p>
-          </v-card-text>
 
-          <img :src="require('../assets/home/top-seperator.png')" style="width: 100%;" />
-          <!-- <hr /> -->
+          <div class="top-separator"></div>
+
           <v-card-text>
             <p class="typo t2">이 슬 . 정진동</p>
             <p class="typo">2018.10.27 토요일 오전 11시</p>
@@ -44,7 +39,7 @@
             <p></p>
             <p class="typo">
               헤어짐의 아쉬움이<br />
-              두사람의 발을 묶던 어스름을<br />
+              두사람의 발을 잡던 어스름을<br />
               수도 없이 보내왔습니다.
             </p>
             <p class="typo">
@@ -69,7 +64,7 @@
           <v-card-text>
             <h3 class="headline mb-0 typo">결혼 사진첩</h3>
             <p></p>
-            <img :src="require('../assets/home/photo-header.png')" style="width:100%;" />
+            <div class="gallery-header"></div>
             <vue-picture-swipe :items="images"></vue-picture-swipe>
           </v-card-text>
         </v-card>
@@ -79,7 +74,31 @@
         <v-card
           color="transparent">
           <v-card-text>
-            <h3 class="headline mb-0 typo">연락처 영역</h3>
+            <h3 class="headline mb-0 typo">연락하기</h3>
+            <p></p>
+            <p class="typo">신랑과 신부에게 축하 인사를 전해 보세요.</p>
+            <dl>
+              <dt>
+                <p class="typo">신부 이 슬</p>
+              </dt>
+              <dd>
+                <a href="tel:010-3104-9922"><img :src="require('../assets/call.png')" /></a>
+              </dd>
+              <dd>
+                <a href="sms:010-3104-9922"><img :src="require('../assets/sms.png')" /></a>
+              </dd>
+            </dl>
+            <dl>
+              <dt>
+                <p class="typo">신랑 정진동</p>
+              </dt>
+              <dd>
+                <a href="tel:010-5460-2379"><img :src="require('../assets/call.png')" /></a>
+              </dd>
+              <dd>
+                <a href="sms:010-5460-2379"><img :src="require('../assets/sms.png')" /></a>
+              </dd>
+            </dl>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -88,7 +107,7 @@
         <v-card
           color="transparent">
           <v-card-text>
-            <h3 class="headline mb-0 typo">일시,장소 가이드 영역</h3>
+            <h3 class="headline mb-0 typo">오시는 길</h3>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -106,8 +125,8 @@
           </v-card-text>
         </v-card>
       </v-flex>
-    </v-container>
-  </div>
+    </v-layout>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -199,5 +218,27 @@ hr {
 }
 .background-home {
   background-color: #fff8e5;
+}
+.header-image {
+  background: url('../assets/home/header.png') no-repeat center;
+  height: 145px;
+}
+.title-image {
+  background: url('../assets/home/welcome-panel.png') no-repeat center;
+  background-size: contain;
+  width: 100%;
+  height: 270px;
+}
+.top-separator {
+  background: url('../assets/home/top-seperator.png') no-repeat center;
+  background-size: contain;
+  width: 100%;
+  height: 240px;
+}
+.gallery-header {
+  background: url('../assets/home/photo-header.png') no-repeat top;
+  background-size: contain;
+  width: 100%;
+  height: 500px;
 }
 </style>

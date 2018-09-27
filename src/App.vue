@@ -10,7 +10,7 @@
     </v-toolbar>
     <loading-dialog :is-loading="isLoading"></loading-dialog>
     <v-content>
-      <v-layout v-scroll="onScroll">
+      <v-layout>
         <router-view></router-view>
       </v-layout>
       <div style="height: 50px;"></div>
@@ -84,17 +84,6 @@ export default class App extends Vue {
   private get isNavShow(): boolean {
     return true;
   }
-
-  // public onScroll(e: any) {
-  //   let currentY: number = window.pageYOffset || document.documentElement.scrollTop;
-  //   if (this.prevY === null) return this.prevY = currentY;
-  //   if (this.prevY < currentY) {
-  //     this.isNavShow = false;
-  //   } else {
-  //     this.isNavShow = true;
-  //   }
-  //   this.prevY = currentY;
-  // }
 
   public get showTopMenuBar(): boolean {
     if (this.nav === 'quiz' || this.nav === 'rank') return true;
