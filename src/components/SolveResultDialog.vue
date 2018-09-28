@@ -81,7 +81,7 @@ export default class SolveResultDialog extends Vue {
       return self.refreshQuizAndPlay();
     })
     .then(() => {
-      console.log('refreshed');
+      
     });
   }
 

@@ -95,14 +95,9 @@ export default class App extends Vue {
   }
 
   public mounted() {
-    console.log('mounted!');
     this.authorize()
-    .then(function(resp) {
-      console.log('initialize completed!');
-    })
-    .catch((err: Error) => {
-      console.log('something error happended!');
-    });
+    .then(function(resp) {})
+    .catch((err: Error) => {});
   }
 }
 </script>

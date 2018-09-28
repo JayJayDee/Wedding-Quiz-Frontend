@@ -44,7 +44,6 @@ export default class Rank extends Vue {
         if (self.memberToken) return self.queryMyRank(self.memberToken);
       })
       .then(() => {
-        console.log('query-my-rank-completed');
       });
     }, 1);
   }
