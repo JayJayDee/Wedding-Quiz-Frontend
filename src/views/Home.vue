@@ -108,6 +108,28 @@
           color="transparent">
           <v-card-text>
             <h3 class="headline mb-0 typo">오시는 길</h3>
+            <p></p>
+            <center>
+              <vue-daum-map
+                class="daum-map-size"
+                appKey="f69b90dc78ae2f0f93c73b35d20948f6"
+                :draggable="false"
+                :scrollwheel="true"
+                :level="5"
+                :libraries="['drawing']"
+                :center="gpsCenter">
+              </vue-daum-map>
+            </center>
+          </v-card-text>
+          <v-card-text>
+            <p class="typo">
+              경기 성남시 수정구 창곡동 359-3<br />
+              밀리토피아 호텔 웨딩센터
+            </p>
+            <p class="typo">
+              복정역 2번 출구에서 셔틀버스 운행<br />
+              10시부터 15분 간격
+            </p>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -132,13 +154,25 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import VuePictureSwipe,{ GalleryItem } from 'vue-picture-swipe';
+import VueDaumMap from 'vue-daum-map';
+
+interface DaumMapPos {
+  lat: number;
+  lng: number;
+}
 
 @Component({
   components: {
-    VuePictureSwipe
+    VuePictureSwipe,
+    VueDaumMap
   }
 })
 export default class Home extends Vue {
+
+  private gpsCenter: DaumMapPos = {
+    lat: 37.468208,
+    lng: 127.143442
+  };
 
   private get images(): GalleryItem[] {
     return [
@@ -240,5 +274,10 @@ hr {
   background-size: contain;
   width: 100%;
   height: 500px;
+}
+.daum-map-size {
+  width: 80%;
+  max-width: 500px;
+  height: 400px;
 }
 </style>
