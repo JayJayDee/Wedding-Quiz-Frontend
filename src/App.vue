@@ -103,6 +103,10 @@ export default class App extends Vue {
 </script>
 
 <style>
+figure a img {
+  width: 180px;
+  height: 180px;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

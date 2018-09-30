@@ -109,17 +109,7 @@
           <v-card-text>
             <h3 class="headline mb-0 typo">오시는 길</h3>
             <p></p>
-            <center>
-              <vue-daum-map
-                class="daum-map-size"
-                appKey="f69b90dc78ae2f0f93c73b35d20948f6"
-                :draggable="false"
-                :scrollwheel="true"
-                :level="5"
-                :libraries="['drawing']"
-                :center="gpsCenter">
-              </vue-daum-map>
-            </center>
+            <img :src="require('../assets/map.png')" class="map-size" />
           </v-card-text>
           <v-card-text>
             <p class="typo">
@@ -130,6 +120,16 @@
               복정역 2번 출구에서 셔틀버스 운행<br />
               10시부터 15분 간격
             </p>
+          </v-card-text> 
+          <v-card-text>
+            <a :href="daumMapLink" class="map-link">
+              <img :src="require('../assets/daum-map-icon.png')" class="map-icon" />
+              <p class="typo">다음 지도</p>
+            </a>
+            <a :href="naverMapLink" class="map-link">
+              <img :src="require('../assets/naver-map-icon.png')" class="map-icon" />
+              <p class="typo">네이버 지도</p>
+            </a>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -154,25 +154,40 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import VuePictureSwipe,{ GalleryItem } from 'vue-picture-swipe';
-import VueDaumMap from 'vue-daum-map';
 
-interface DaumMapPos {
+import { library, icon } from '@fortawesome/fontawesome-svg-core';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+interface MapPos {
   lat: number;
   lng: number;
 }
 
+library.add(faCopy);
+
 @Component({
   components: {
     VuePictureSwipe,
-    VueDaumMap
+    FontAwesomeIcon
   }
 })
 export default class Home extends Vue {
 
-  private gpsCenter: DaumMapPos = {
-    lat: 37.468208,
-    lng: 127.143442
+  private gps: MapPos = {
+    lat: 37.4680439,
+    lng: 127.1440084
   };
+
+  private location: string = '밀리토피아 웨딩홀';
+
+  private get naverMapLink(): string {
+    return `navermaps://?menu=location&pinType=place&lat=${this.gps.lat}&lng=${this.gps.lng}&title=${encodeURIComponent(this.location)}`;
+  }
+
+  private get daumMapLink(): string {
+    return `daummaps://search?q=${encodeURIComponent(this.location)}&p=${this.gps.lat},${this.gps.lng}`;
+  }
 
   private get images(): GalleryItem[] {
     return [
@@ -275,9 +290,18 @@ hr {
   width: 100%;
   height: 500px;
 }
-.daum-map-size {
-  width: 80%;
+.map-size {
+  width: 100%;
   max-width: 500px;
-  height: 400px;
+}
+.map-icon {
+  width: 50px;
+  height: 50px;
+}
+.map-link {
+  text-decoration: none;
+}
+.copy-icon-color {
+  color: #372b05;
 }
 </style>
