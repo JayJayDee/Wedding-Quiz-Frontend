@@ -104,8 +104,8 @@ export default class App extends Vue {
 
 <style>
 figure a img {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
