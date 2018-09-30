@@ -27,7 +27,7 @@
             <p class="typo">2F 아이리스홀</p>
           </v-card-text>
 
-          <img :src="require('../assets/home/middle-seperator.png')" />        
+          <img :src="require('../assets/home/middle-seperator.png')" class="middle-seperator" />
         </v-card>
       </v-flex>
 
@@ -53,7 +53,7 @@
             </p>
             <br />
             <br />
-            <img :src="require('../assets/home/middle-seperator-2.png')" />
+            <img :src="require('../assets/home/middle-seperator-2.png')" class="middle-seperator-2" />
           </v-card-text>
         </v-card>
       </v-flex>
@@ -261,6 +261,14 @@ hr {
   border-color: #aaaaaa;
   margin-bottom: 20px;
   margin-top: 10px;
+}
+.middle-seperator {
+  width: 120px;
+  height: 66px;
+}
+.middle-seperator-2 {
+  width: 120px;
+  height: 74px;
 }
 .margin-section {
   margin-top: 50px;
