@@ -26,7 +26,7 @@ export default class LoadingDialog extends Vue {
   private isLoading: boolean;
 
   public mounted() {
-    console.log('loading-mounted!');
+    
   }
 }
 </script>

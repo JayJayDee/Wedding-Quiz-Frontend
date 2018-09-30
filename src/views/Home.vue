@@ -108,6 +108,28 @@
           color="transparent">
           <v-card-text>
             <h3 class="headline mb-0 typo">오시는 길</h3>
+            <p></p>
+            <img :src="require('../assets/map.png')" class="map-size" />
+          </v-card-text>
+          <v-card-text>
+            <p class="typo">
+              경기 성남시 수정구 창곡동 359-3<br />
+              밀리토피아 호텔 웨딩센터
+            </p>
+            <p class="typo">
+              복정역 2번 출구에서 셔틀버스 운행<br />
+              10시부터 15분 간격
+            </p>
+          </v-card-text> 
+          <v-card-text>
+            <a :href="daumMapLink" class="map-link">
+              <img :src="require('../assets/daum-map-icon.png')" class="map-icon" />
+              <p class="typo">다음 지도</p>
+            </a>
+            <a :href="naverMapLink" class="map-link">
+              <img :src="require('../assets/naver-map-icon.png')" class="map-icon" />
+              <p class="typo">네이버 지도</p>
+            </a>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -133,12 +155,39 @@
 import { Component, Vue } from 'vue-property-decorator';
 import VuePictureSwipe,{ GalleryItem } from 'vue-picture-swipe';
 
+import { library, icon } from '@fortawesome/fontawesome-svg-core';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+interface MapPos {
+  lat: number;
+  lng: number;
+}
+
+library.add(faCopy);
+
 @Component({
   components: {
-    VuePictureSwipe
+    VuePictureSwipe,
+    FontAwesomeIcon
   }
 })
 export default class Home extends Vue {
+
+  private gps: MapPos = {
+    lat: 37.4680439,
+    lng: 127.1440084
+  };
+
+  private location: string = '밀리토피아 웨딩홀';
+
+  private get naverMapLink(): string {
+    return `navermaps://?menu=location&pinType=place&lat=${this.gps.lat}&lng=${this.gps.lng}&title=${encodeURIComponent(this.location)}`;
+  }
+
+  private get daumMapLink(): string {
+    return `daummaps://search?q=${encodeURIComponent(this.location)}&p=${this.gps.lat},${this.gps.lng}`;
+  }
 
   private get images(): GalleryItem[] {
     return [
@@ -240,5 +289,19 @@ hr {
   background-size: contain;
   width: 100%;
   height: 500px;
+}
+.map-size {
+  width: 100%;
+  max-width: 500px;
+}
+.map-icon {
+  width: 50px;
+  height: 50px;
+}
+.map-link {
+  text-decoration: none;
+}
+.copy-icon-color {
+  color: #372b05;
 }
 </style>

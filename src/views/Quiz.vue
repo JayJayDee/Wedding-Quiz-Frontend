@@ -89,7 +89,6 @@ export default class Quiz extends Vue {
 
   public mounted() {
     if (!this.memberToken) {
-      console.log('member_token not found');
     }
   }
   

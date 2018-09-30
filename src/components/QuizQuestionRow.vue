@@ -20,7 +20,7 @@ export default class QuizQuestionRow extends Vue {
   private type: string;
 
   public mounted() {
-    console.log('quiz-question-row init');
+    
   }
 
   public get innerContent(): string {
