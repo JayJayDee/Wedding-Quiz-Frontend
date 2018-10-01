@@ -92,15 +92,6 @@
               </v-flex>
             </v-layout>
 
-            <!-- <v-layout row wrap>
-              <v-flex xs6>
-                <p class="typo"><b>신랑측 혼주</b></p>
-              </v-flex>
-              <v-flex xs6>
-                <p class="typo"><b>신부측 혼주</b></p>
-              </v-flex>
-            </v-layout> -->
-
             <v-layout row wrap>
               <v-flex xs6 class="contact-row">
                 <p class="typo"><b>아버지</b> 정우현</p>
@@ -198,7 +189,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import VuePictureSwipe,{ GalleryItem } from 'vue-picture-swipe';
 
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faPhoneSquare, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface MapPos {
@@ -206,7 +197,8 @@ interface MapPos {
   lng: number;
 }
 
-library.add(faCopy);
+library.add(faPhoneSquare);
+library.add(faEnvelopeSquare);
 
 @Component({
   components: {
