@@ -76,8 +76,50 @@
           <v-card-text>
             <h3 class="headline mb-0 typo">연락하기</h3>
             <p></p>
-            <p class="typo">신랑과 신부에게 축하 인사를 전해 보세요.</p>
-            <dl>
+            <p class="typo">
+                신랑, 신부 및 양가 어르신들께<br />축하 인사를 전해 보세요.
+            </p>
+            <v-layout>
+              <v-flex xs6 class="contact-row">
+                <p class="typo"><b>신랑</b> 정진동</p>
+                <a href="tel:010-5460-2379" class="phone-icon-cell"><img :src="require('../assets/call.png')" /></a> 
+                <a href="sms:010-5460-2379"><img :src="require('../assets/sms.png')" /></a>
+              </v-flex>
+              <v-flex xs6 class="contact-row">
+                <p class="typo"><b>신부</b> 이 슬</p>
+                <a href="tel:010-3104-9922" class="phone-icon-cell"><img :src="require('../assets/call.png')" /></a> 
+                <a href="sms:010-3104-9922"><img :src="require('../assets/sms.png')" /></a>
+              </v-flex>
+            </v-layout>
+
+            <!-- <v-layout row wrap>
+              <v-flex xs6>
+                <p class="typo"><b>신랑측 혼주</b></p>
+              </v-flex>
+              <v-flex xs6>
+                <p class="typo"><b>신부측 혼주</b></p>
+              </v-flex>
+            </v-layout> -->
+
+            <v-layout row wrap>
+              <v-flex xs6 class="contact-row">
+                <p class="typo"><b>아버지</b> 정우현</p>
+                <a href="tel:010-4532-2378" class="phone-icon-cell"><img :src="require('../assets/call.png')" /></a> 
+                <a href="sms:010-4532-2378"><img :src="require('../assets/sms.png')" /></a>
+                <p class="typo"><b>어머니</b> 전정숙</p>
+                <a href="tel:010-9540-2378" class="phone-icon-cell"><img :src="require('../assets/call.png')" /></a> 
+                <a href="sms:010-9540-2378"><img :src="require('../assets/sms.png')" /></a>
+              </v-flex>
+              <v-flex xs6 class="contact-row">
+                <p class="typo"><b>아버지</b> 이충훈</p>
+                <a href="tel:010-6388-7289" class="phone-icon-cell"><img :src="require('../assets/call.png')" /></a> 
+                <a href="sms:010-6388-7289"><img :src="require('../assets/sms.png')" /></a>
+                <p class="typo"><b>어머니</b> 전미선</p>
+                <a href="tel:010-6288-9922" class="phone-icon-cell"><img :src="require('../assets/call.png')" /></a> 
+                <a href="sms:010-6288-9922"><img :src="require('../assets/sms.png')" /></a>
+              </v-flex>
+            </v-layout>
+            <!-- <dl>
               <dt>
                 <p class="typo">신부 이 슬</p>
               </dt>
@@ -98,7 +140,7 @@
               <dd>
                 <a href="sms:010-5460-2379"><img :src="require('../assets/sms.png')" /></a>
               </dd>
-            </dl>
+            </dl> -->
           </v-card-text>
         </v-card>
       </v-flex>
@@ -311,5 +353,14 @@ hr {
 }
 .copy-icon-color {
   color: #372b05;
+}
+.phone-icon-cell {
+  margin-right: 20px;
+}
+p.typo {
+  font-size: 11pt;
+}
+.contact-row > p {
+  margin-bottom: 4px;
 }
 </style>
