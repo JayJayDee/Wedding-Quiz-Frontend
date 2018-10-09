@@ -7,7 +7,7 @@
       </v-card-title>
       <v-card-text>
         <p>아직 퀴즈가 열리지 않았습니다.</p>
-        <p>퀴즈배틀은 10월 10일에 오픈됩니다!</p>
+        <p>퀴즈배틀은 10월 12일에 오픈됩니다!</p>
       </v-card-text>
     </v-card>
   </v-layout>
