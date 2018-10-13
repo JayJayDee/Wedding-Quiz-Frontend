@@ -44,11 +44,8 @@
 
     <v-flex xs12> 
       <v-card class="card-row">
-        <v-card-title>
-          <h3>퀴즈 이동</h3>
-        </v-card-title>
         <v-card-text> 
-          <v-btn>이전</v-btn>
+          <v-btn @click="goPrev()">이전</v-btn>
           <v-btn @click="goNext()">다음</v-btn>
         </v-card-text>
       </v-card>
