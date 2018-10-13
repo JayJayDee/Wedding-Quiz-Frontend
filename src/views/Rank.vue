@@ -16,7 +16,7 @@ import RankAll from './rank/RankAll.vue';
 import RankMy from './rank/RankMy.vue';
 import { Action, State } from 'vuex-class';
 import { setTimeout } from 'timers';
-import { MyRank } from '@/types/common';
+import { MyRank, RankElement } from '@/types/common';
 
 @Component({
   components: {
