@@ -5,7 +5,7 @@ import { Member, Play } from "@/types";
 import { rootState } from '@/stores/state';
 import { rootMutations } from '@/stores/mutations';
 import { rootActions } from '@/stores/actions';
-import { Quiz, PlayResult, RankElement, MyRank, QuizResult } from '@/types/common';
+import { Quiz, PlayResult, RankElement, MyRank, QuizResult, QuizTest } from '@/types/common';
 import { QuizConfig } from '@/apis';
 
 export interface RootState {
@@ -16,6 +16,7 @@ export interface RootState {
   is_loading: boolean;
   error: string | null;
   current_quiz: Quiz | null;
+  quiz_test: QuizTest | null;
   ranks: RankElement[] | null;
   my_rank: MyRank | null;
   results: QuizResult[] | null;

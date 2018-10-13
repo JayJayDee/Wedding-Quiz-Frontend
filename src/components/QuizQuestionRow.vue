@@ -1,6 +1,13 @@
 
 <template>
-  <p class="text-sm-left">{{ innerContent }}</p>
+  <div> 
+    <div v-if="type === 'TEXT'">
+      <p class="text-sm-left">{{ innerContent }}</p>
+    </div>
+    <div v-if="type === 'IMAGE'">
+      <img class="question-image" :src="innerContent" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -31,4 +38,8 @@ export default class QuizQuestionRow extends Vue {
 </script>
 
 <style scoped>
+.question-image {
+  width: 100%;
+  padding: 10px;
+}
 </style>
