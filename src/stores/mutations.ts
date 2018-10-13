@@ -1,6 +1,6 @@
 import { RootState } from '@/stores';
 import { Member, Play } from '@/types';
-import { Quiz, PlayResult, RankElement, MyRank, QuizResult } from '@/types/common';
+import { Quiz, PlayResult, RankElement, MyRank, QuizResult, QuizTest } from '@/types/common';
 import { QuizConfig } from '@/apis';
 
 export const rootMutations = {
@@ -26,6 +26,10 @@ export const rootMutations = {
 
   currentQuiz(state: RootState, quiz: Quiz) {
     state.current_quiz = quiz;
+  },
+
+  quizTest(state: RootState, quizTest: QuizTest) {
+    state.quiz_test = quizTest;
   },
 
   playResult(state: RootState, result: PlayResult) {

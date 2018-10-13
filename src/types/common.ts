@@ -36,6 +36,11 @@ export interface QuizQuestion {
   type: QuizQuestionType;
   content: string;
 }
+export interface QuizTest {
+  quiz_no: number;
+  answer_no: number;
+  answer_description: string;
+}
 
 export interface RankElement {
   rank: number;

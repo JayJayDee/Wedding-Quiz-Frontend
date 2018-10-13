@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 
 import { ReqMemberGet, ReqMemberCreate, ResMemberGet, ResMemberCreate, ApiRequestError, ReqGetQuiz, ResGetQuiz, ReqSolveQuiz, ResSolveQuiz, ReqRanks, ReqGetMyRank, ResGetMyRank, QuizConfig } from "@/apis";
 import { cvtToPlay, cvtToQuizQuestion, cvtToQuizChoice, cvtToMember, cvtToPlayResult, cvtToRankElement, cvtToMyRank, cvtToQuizResult } from '@/apis/converters';
-import { RankElement, MyRank } from '@/types/common';
+import { RankElement, MyRank, Quiz, QuizTest } from '@/types/common';
 
 const baseUrl = 'http://api.weddquiz.com';
 
@@ -41,6 +41,32 @@ export const ApiManager = {
       member_token: rawResp.member_token
     };
     return resp;
+  },
+
+  async requestQuiz(quizNo: number): Promise<Quiz> {
+    let rawResp: any = await this.requestViaAxios({
+      url: `${baseUrl}/quiz/${quizNo}`,
+      method: 'get'
+    });
+    const resp: Quiz = {
+      difficulty: rawResp.difficulty,
+      questions: _.map(rawResp.questions, cvtToQuizQuestion),
+      choices: _.map(rawResp.choices, cvtToQuizChoice)
+    };
+    return resp;
+  },
+
+  async requestQuizTest(quizNo: number): Promise<QuizTest> {
+    let rawResp: any = await this.requestViaAxios({
+      url: `${baseUrl}/quiz/${quizNo}/test`,
+      method: 'get'
+    });
+    const resp: QuizTest = {
+      quiz_no: rawResp.quiz_no,
+      answer_no: rawResp.answer_no,
+      answer_description: rawResp.answer_description
+    };
+    return resp; 
   },
 
   async requestGetQuiz(req: ReqGetQuiz): Promise<ResGetQuiz> {
