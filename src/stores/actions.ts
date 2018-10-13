@@ -84,6 +84,7 @@ export const rootActions = {
 
   async refreshQuiz(store: ActionContext<RootState, any>, quizNo: number) {
     store.commit('loadingStatus', true);
+    await delayLittle();
     try {
       const quiz: Quiz = await ApiManager.requestQuiz(quizNo);
       const quizTest: QuizTest = await ApiManager.requestQuizTest(quizNo);

@@ -1,8 +1,17 @@
 
 <template>
   <v-layout column="1" class="layout">
-    <v-flex xs12>
+    <v-flex xs12> 
       <v-card>
+        <v-card-text> 
+          <v-btn @click="goPrev()">이전</v-btn>
+          <v-btn @click="goNext()">다음</v-btn>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
+    <v-flex xs12>
+      <v-card class="card-row">
         <v-card-title>
           <h3>{{ currentPlayingTitle }}</h3>  
           <v-spacer />
@@ -38,15 +47,6 @@
         </v-card-title>
         <v-card-text> 
           <p>{{ quizTestDesc }}</p>
-        </v-card-text>
-      </v-card>
-    </v-flex>
-
-    <v-flex xs12> 
-      <v-card class="card-row">
-        <v-card-text> 
-          <v-btn @click="goPrev()">이전</v-btn>
-          <v-btn @click="goNext()">다음</v-btn>
         </v-card-text>
       </v-card>
     </v-flex>
