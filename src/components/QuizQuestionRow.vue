@@ -5,7 +5,19 @@
       <p class="text-sm-left">{{ innerContent }}</p>
     </div>
     <div v-if="type === 'IMAGE'">
-      <img class="question-image" :src="innerContent" />
+      <v-img 
+        :src="innerContent"
+        aspect-radio="1"
+        class="grey lighten-2 question-image">
+        <v-layout
+          slot="placeholder" fill-height
+          align-center justify-center ma-0>
+          <v-progress-circular 
+            indeterminate 
+            size="50"
+            color="grey lighten-5" />
+        </v-layout>
+      </v-img>
     </div>
   </div>
 </template>
@@ -39,7 +51,6 @@ export default class QuizQuestionRow extends Vue {
 
 <style scoped>
 .question-image {
-  width: 100%;
-  padding: 10px;
+  margin: 10px;
 }
 </style>
