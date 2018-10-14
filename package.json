@@ -20,7 +20,7 @@
     "vue-picture-swipe": "^0.4.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
-    "vuetify": "^1.1.10",
+    "vuetify": "^1.2.9",
     "vuex": "^3.0.1",
     "vuex-class": "^0.3.1"
   },
