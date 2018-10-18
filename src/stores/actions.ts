@@ -59,7 +59,8 @@ export const rootActions = {
       store.commit('loadingStatus', false);
     } catch (err) {
       store.commit('loadingStatus', false);
-      store.commit('error', err.toString());      
+      store.commit('error', err.toString());
+      alert(err.msg);
     }
   },
 
