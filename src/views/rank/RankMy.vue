@@ -20,7 +20,8 @@
                   <v-card-text>
                     {{ gradeDetail }}<br />
                     {{ prizeDetail }}<br />
-                    도전 결과에 따라 순위는 변동될 수 있습니다.
+                    다른 사람의 도전 결과에 따라 순위는 변동될 수 있습니다.<br />
+                    1등에서 5등까지의 순위에 대해 상품을 증정합니다.
                   </v-card-text>
                 </v-card>
               </v-flex>
@@ -72,7 +73,7 @@ export default class RankMy extends Vue {
   
   public get prizeDetail(): string {
     if (!this.myRank) return '';
-    if (this.myRank.rank <= 10) {
+    if (this.myRank.rank <= 5) {
       return '축하합니다! 상품을 기대해 주세요!';
     }
     return '';
