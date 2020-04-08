@@ -1,141 +1,60 @@
 <template>
   <v-app>
-    <!-- <v-navigation-drawer app></v-navigation-drawer> -->
-    <v-toolbar 
-      color="white" 
+    <v-app-bar
       app
-      v-if="showTopMenuBar">
-      <!-- <v-toolbar-side-icon color="primary"></v-toolbar-side-icon> -->
-      <v-toolbar-title class="teal--text">Seul&Dong's Wedding</v-toolbar-title>
-    </v-toolbar>
-    <loading-dialog :is-loading="isLoading"></loading-dialog>
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+        />
+
+        <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          min-width="100"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          width="100"
+        />
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Latest Release</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar>
+
     <v-content>
-      <v-layout>
-        <router-view></router-view>
-      </v-layout>
-      <div style="height: 50px;"></div>
+      <HelloWorld/>
     </v-content>
-    <v-footer color="transparent" fixed>
-      <v-bottom-nav
-        :active.sync="nav"
-        :value="isNavShow"
-        absolute
-        color="white">
-        <v-btn color="pink" flat value="home" to="/">
-          <span>Wedding</span>
-          <v-icon>favorite_border</v-icon>
-        </v-btn>
-
-        <v-btn color="pink" flat value="quiz" to="/quiz">
-          <span>Quiz</span>
-          <v-icon>help_outline</v-icon>
-        </v-btn>
-
-        <v-btn color="pink" flat value="rank" to="/rank">
-          <span>Rank</span>
-          <v-icon>people_outline</v-icon>
-        </v-btn>
-      </v-bottom-nav> 
-    </v-footer>
   </v-app>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import LoadingDialog from './components/LoadingDialog.vue';
+<script>
+import HelloWorld from './components/HelloWorld';
 
-import { State, Action } from 'vuex-class';
-
-@Component({
+export default {
   name: 'App',
+
   components: {
-    LoadingDialog
-  }
-})
-export default class App extends Vue {
+    HelloWorld,
+  },
 
-  @State('member_token') 
-  private memberToken: string | null;
-
-  private prevY: number | null;
-  //private isNavShow: boolean;
-  private nav: string = '';
-
-  @State('is_loading')
-  private isLoading: boolean;
-
-  @Action('authorize')
-  private authorize: () => Promise<any>;
-
-  constructor() {
-    super();
-    this.prevY = null;
-    //this.isNavShow = true;
-  }
-
-  private getCurrentNav(): string {
-    let url = location.href;
-    if (url.includes('quiz')) return 'quiz';
-    else if (url.includes('rank')) return 'rank';
-    return 'home';
-  }
-
-  private get isNavShow(): boolean {
-    return true;
-  }
-
-  public get showTopMenuBar(): boolean {
-    if (this.nav === 'quiz' || this.nav === 'rank') return true;
-    return false;
-  }
-
-  public get routeName(): string | undefined {
-    return this.$router.currentRoute.name;
-  }
-
-  public mounted() {
-    this.authorize()
-    .then(function(resp) {})
-    .catch((err: Error) => {});
-  }
-}
+  data: () => ({
+    //
+  }),
+};
 </script>
-
-<style>
-figure a img {
-  width: 200px;
-  height: 200px;
-}
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-h3 {
-  color: #333333;
-}
-
-p {
-  color: #333333;
-}
-
-body {
-  overflow:hidden;
-}
-</style>
