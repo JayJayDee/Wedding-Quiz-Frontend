@@ -68,6 +68,6 @@ body {
   padding: 20px;
 }
 .content {
-  background-color: #dddddd;
+  background-color: #eeeeee;
 }
 </style>

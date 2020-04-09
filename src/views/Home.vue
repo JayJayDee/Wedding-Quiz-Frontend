@@ -1,20 +1,20 @@
 <template>
   <v-container class="page">
     <Welcome />
-    <div style="height: 30px"></div>
-    <MoveToQuiz />
+    <div style="height: 20px"></div>
+    <SignUp />
   </v-container>
 </template>
 
 <script>
 import Welcome from '@/components/Welcome.vue';
-import MoveToQuiz from '@/components/MoveToQuiz.vue';
+import SignUp from '@/components/SignUp.vue';
 
 export default {
   name: 'Home',
   components: {
     Welcome,
-    MoveToQuiz
+    SignUp
   }
 }
 </script>
