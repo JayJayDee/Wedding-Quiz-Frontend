@@ -1,13 +1,6 @@
 <template>
-  <!-- <div id="app">
-    <router-view/>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-  </div> -->
   <v-app>
-    <v-content>
+    <v-content class="content">
       <v-layout>
         <router-view></router-view>
       </v-layout>
@@ -15,19 +8,19 @@
     </v-content>
     <v-footer>
       <v-bottom-navigation shift fixed>
-         <v-btn>
+         <v-btn to="/">
           <span>Home</span>
-          <v-icon>mdi-television-play</v-icon>
+          <v-icon>mdi-cards-heart</v-icon>
         </v-btn>
 
-        <v-btn>
+        <v-btn to="/quiz">
           <span>Quiz</span>
-          <v-icon>mdi-music-note</v-icon>
+          <v-icon>mdi-head-question-outline</v-icon>
         </v-btn>
 
-        <v-btn>
+        <v-btn to="/rank">
           <span>Rank</span>
-          <v-icon>mdi-music-note</v-icon>
+          <v-icon>mdi-seal</v-icon>
         </v-btn>
       </v-bottom-navigation>
     </v-footer>
@@ -70,5 +63,11 @@ p {
 }
 body {
   overflow:hidden;
+}
+.page {
+  padding: 15px;
+}
+.content {
+  background-color: #dddddd;
 }
 </style>
