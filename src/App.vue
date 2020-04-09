@@ -65,7 +65,7 @@ body {
   overflow:hidden;
 }
 .page {
-  padding: 15px;
+  padding: 20px;
 }
 .content {
   background-color: #dddddd;

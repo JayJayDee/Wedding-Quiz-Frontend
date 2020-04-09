@@ -3,7 +3,7 @@
     <v-card-text>
       <div>Word of the Day</div>
       <p class="display-1 text--primary">
-        퀴즈
+        be•nev•o•lent
       </p>
       <p>adjective</p>
       <div class="text--primary">
