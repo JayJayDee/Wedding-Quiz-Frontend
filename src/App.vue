@@ -24,12 +24,40 @@
         </v-btn>
       </v-bottom-navigation>
     </v-footer>
+    <v-dialog v-model="dialog.show" persistent>
+      <v-card>
+        <v-card-title class="headline">{{dialog.title}}</v-card-title>
+        <v-card-text>{{dialog.text}}</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" text @click="dialog.show = false">닫기</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-overlay :value="loading">
+      <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
   </v-app>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
-  
+  computed: {
+    ...mapState([ 'loading', 'dialog' ])
+  },
+  methods: {
+    ...mapActions({
+      afterAppLoaded: 'afterAppLoaded'
+    })
+  },
+  async mounted() {
+    const self = this;
+    this.$nextTick(function () {
+      self.afterAppLoaded();
+    });
+  }
 }
 </script>
 

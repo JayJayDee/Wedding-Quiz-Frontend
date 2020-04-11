@@ -10,17 +10,42 @@
       </div>
     </v-card-text>
     <v-card-text>
-      <v-text-field label="이름" :rules="rules" hide-details="auto"></v-text-field>
-      <v-text-field label="전화번호, 예) 010-5460-2379"></v-text-field>
+      <v-text-field label="이름" hide-details="auto" v-model="name"></v-text-field>
+      <v-text-field label="전화번호, 예) 01054602379" v-model="phone"></v-text-field>
     </v-card-text>
     <v-card-text>
-      <v-btn color="primary ">퀴즈 풀이 시작!</v-btn>
+      <v-btn color="primary" v-on:click="onClickRegister">퀴즈 풀이 시작!</v-btn>
     </v-card-text>
   </v-card>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-  
+  data() {
+    return {
+      name: '',
+      phone: ''
+    };
+  },
+  methods: {
+    ...mapActions([ 'registerMember', 'showDialog' ]),
+    async onClickRegister() {
+      if (this.name.trim().length === 0 ||
+          this.phone.trim().length === 0) {
+        this.showDialog({
+          title: '죄송합니다.',
+          text: `이름과 전화번호를 입력해주셔야 퀴즈에 응모 가능합니다.
+                입력하신 이름과 전화번호를 다시 한번 확인해주세요.`
+        });
+        return;
+      }
+      this.registerMember({
+        name: this.name,
+        phone: this.phone
+      });
+    }
+  }
 }
 </script>
