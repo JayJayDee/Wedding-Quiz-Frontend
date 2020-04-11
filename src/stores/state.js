@@ -6,5 +6,11 @@ export const state = {
     show: false,
     title: null,
     text: null
+  },
+  member: null,
+  accessToken: null,
+  quiz: {
+    current: null,
+    status: null
   }
 };

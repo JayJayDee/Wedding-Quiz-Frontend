@@ -66,6 +66,9 @@ figure a img {
   width: 200px;
   height: 200px;
 }
+.card {
+  margin-bottom: 20px;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
