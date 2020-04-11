@@ -9,6 +9,9 @@
         퀴즈 메뉴를 이용하셔서 나머지 퀴즈를 다 풀어보세요!
       </div>
     </v-card-text>
+    <v-card-text>
+      <v-btn color="primary" v-on:click="onClickGoQuiz">퀴즈 풀러 가기</v-btn>
+    </v-card-text>
   </v-card>
 </template>
 
@@ -19,5 +22,10 @@ export default {
   computed: {
     ...mapState([ 'member' ])
   },
+  methods: {
+    async onClickGoQuiz() {
+      location.href = '/#/quiz';
+    }
+  }
 }
 </script>

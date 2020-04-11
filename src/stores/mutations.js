@@ -16,5 +16,10 @@ export const mutations = {
     state.member = {
       name, phone
     };
+  },
+
+  putCurrentQuiz(state, { quiz, status }) {
+    state.quiz.current = quiz;
+    state.quiz.status = status;
   }
 };

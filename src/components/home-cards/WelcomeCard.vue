@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto">
+  <v-card class="mx-auto card">
     <v-card-text>
       <div>Hyemin · Dongjin</div>
       <p class="display-1 text--primary">

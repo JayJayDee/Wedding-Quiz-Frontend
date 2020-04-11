@@ -62,3 +62,11 @@ export const requestGetMember =
       qs: {},
       accessToken
     });
+
+export const requestGetQuiz =
+  ({ accessToken }) =>
+    get({
+      url: '/quiz',
+      qs: {},
+      accessToken
+    });

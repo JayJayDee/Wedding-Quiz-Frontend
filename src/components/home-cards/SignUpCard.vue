@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto">
+  <v-card class="mx-auto card">
     <v-card-text>
       <div class="text--primary">
         퀴즈 풀이를 위해 이름과 전화번호를 입력해주세요!

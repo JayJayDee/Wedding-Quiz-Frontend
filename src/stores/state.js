@@ -8,5 +8,9 @@ export const state = {
     text: null
   },
   member: null,
-  accessToken: null
+  accessToken: null,
+  quiz: {
+    current: null,
+    status: null
+  }
 };

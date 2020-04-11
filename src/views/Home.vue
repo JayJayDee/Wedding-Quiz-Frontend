@@ -1,11 +1,10 @@
 <template>
   <v-container class="page">
-    <Welcome />
-    <div style="height: 20px"></div>
+    <WelcomeCard />
 
     <LoadingCard
       v-if="loading === true" />
-    <SignUp
+    <SignUpCard
       v-if="member === null && loading === false" />
     <MyInfoCard
       v-if="member !== null && loading === false" />
@@ -15,16 +14,16 @@
 <script>
 import { mapState } from 'vuex';
 
-import Welcome from '@/components/Welcome.vue';
-import SignUp from '@/components/SignUp.vue';
-import MyInfoCard from '@/components/MyInfoCard.vue';
+import WelcomeCard from '@/components/home-cards/WelcomeCard.vue';
+import SignUpCard from '@/components/home-cards/SignUpCard.vue';
+import MyInfoCard from '@/components/home-cards/MyInfoCard.vue';
 import LoadingCard from '@/components/LoadingCard.vue';
 
 export default {
   name: 'Home',
   components: {
-    Welcome,
-    SignUp,
+    WelcomeCard,
+    SignUpCard,
     MyInfoCard,
     LoadingCard
   },
