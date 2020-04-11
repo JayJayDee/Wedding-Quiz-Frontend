@@ -70,3 +70,11 @@ export const requestGetQuiz =
       qs: {},
       accessToken
     });
+
+export const requestSolveQuiz =
+  ({ quizNo, choiceNo,  accessToken }) =>
+    post({
+      url: `/quiz/${quizNo}/solve`,
+      body: { choiceNo },
+      accessToken
+    });

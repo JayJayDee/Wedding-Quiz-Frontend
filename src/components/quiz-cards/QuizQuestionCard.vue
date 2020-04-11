@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto">
+  <v-card class="mx-auto card">
     <v-card-text v-if="quiz.current !== null">
       <div class="text--secondary">
         {{currentSequence}} 문제

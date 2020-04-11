@@ -2,10 +2,11 @@ import {
   requestRegisterMember,
   requestGetMember,
   requestGetQuiz,
-  ApiError
+  ApiError,
+  requestSolveQuiz
 } from '../apis';
 
-const WAIT_COMMON = 500;
+const WAIT_COMMON = 300;
 
 const waitLittle = (ms) =>
   new Promise((resolve) =>
@@ -79,12 +80,40 @@ export const actions = {
 
   async refreshQuiz({ commit, state }) {
     commit('loadingIndicator', true);
-
     try {
       await waitLittle(WAIT_COMMON);
       const accessToken = state.accessToken;
       const quizResp = await requestGetQuiz({ accessToken });
       commit('putCurrentQuiz', quizResp);
+
+    } catch (err) {
+      handleError({ commit, err });
+    } finally {
+      commit('loadingIndicator', false);
+    }
+  },
+
+  async solveQuiz({ commit, state }, { quizNo, choiceNo }) {
+    commit('loadingIndicator', true);
+    try {
+      await waitLittle(WAIT_COMMON);
+      const accessToken = state.accessToken;
+
+      const { correct, choices } = await requestSolveQuiz({ quizNo, choiceNo, accessToken });
+      
+      if (correct === true) {
+        commit('dialog', {
+          show: true,
+          title: '정답입니다!',
+          text: `정답은 ${choices.correct.choiceText} 이었습니다!`
+        });
+      } else {
+        commit('dialog', {
+          show: true,
+          title: '오답입니다...',
+          text: `정답은 ${choices.correct.choiceText} 이었습니다!`
+        });
+      }
 
     } catch (err) {
       handleError({ commit, err });
