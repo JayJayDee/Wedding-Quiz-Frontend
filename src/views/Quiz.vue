@@ -4,6 +4,8 @@
       v-if="loading === true" />
     <QuizQuestionCard
       v-if="quiz && quiz.current !== null && loading === false" />
+    <QuizAnswerCard
+      v-if="quiz && quiz.current !== null && loading === false" />
   </v-container>
 </template>
 
@@ -12,14 +14,22 @@ import { mapActions, mapState } from 'vuex';
 
 import LoadingCard from '@/components/LoadingCard.vue';
 import QuizQuestionCard from '@/components/quiz-cards/QuizQuestionCard.vue';
+import QuizAnswerCard from '@/components/quiz-cards/QuizAnswerCard.vue';
 
 export default {
   components: {
     LoadingCard,
-    QuizQuestionCard
+    QuizQuestionCard,
+    QuizAnswerCard
   },
   computed: {
-    ...mapState([ 'member', 'loading', 'quiz' ])
+    ...mapState([ 'member', 'loading', 'quiz' ]),
+    choices() {
+      if (this.quiz) {
+        return this.quiz.current.choices;
+      }
+      return [];
+    }
   },
   methods: {
     ...mapActions([ 'refreshQuiz' ])
