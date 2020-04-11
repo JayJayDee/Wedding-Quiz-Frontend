@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto">
+  <v-card class="mx-auto card">
     <v-card-text>
       <div class="text--primary">
         안녕하세요, {{member.name}}님!

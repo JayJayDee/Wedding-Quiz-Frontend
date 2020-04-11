@@ -23,6 +23,11 @@ const handleError = ({ commit, err }) => {
 };
 
 export const actions = {
+  logout() {
+    localStorage.removeItem('weddQuizAccessToken');
+    location.reload();
+  },
+
   async afterAppLoaded({ commit }) {
     commit('loadingIndicator', true);
     try {
