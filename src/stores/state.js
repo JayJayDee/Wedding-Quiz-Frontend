@@ -19,5 +19,8 @@ export const state = {
   quiz: {
     current: null,
     status: null
+  },
+  rank: {
+    global: []
   }
 };

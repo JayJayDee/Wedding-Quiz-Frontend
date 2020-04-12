@@ -3,7 +3,8 @@ import {
   requestGetMember,
   requestGetQuiz,
   ApiError,
-  requestSolveQuiz
+  requestSolveQuiz,
+  requestGlobalRank
 } from '../apis';
 
 const WAIT_COMMON = 300;
@@ -119,6 +120,21 @@ export const actions = {
         correct,
         correctChoice: choices.correct
       });
+      
+    } catch (err) {
+      handleError({ commit, err });
+    } finally {
+      commit('loadingIndicator', false);
+    }
+  },
+
+  async refreshRanks({ commit, state }) {
+    commit('loadingIndicator', true);
+    try {
+      await waitLittle(WAIT_COMMON);
+      const accessToken = state.accessToken;
+      const { ranks } = await requestGlobalRank({ accessToken });
+      commit('putGlobalRanks', { ranks });
       
     } catch (err) {
       handleError({ commit, err });

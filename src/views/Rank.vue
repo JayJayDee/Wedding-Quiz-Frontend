@@ -1,62 +1,23 @@
 <template>
-  <div class="rank">
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-    <h1>RANK PAGE</h1>
-  </div>
+  <v-container class="page">
+    <GlobalRankCard />
+  </v-container>
 </template>
 
 <script>
-export default {
+import { mapActions } from 'vuex';
 
+import GlobalRankCard from '@/components/rank-cards/GlobalRankCard.vue';
+
+export default {
+  components: {
+    GlobalRankCard
+  },
+  methods: {
+    ...mapActions([ 'refreshRanks' ])
+  },
+  async mounted() {
+    this.refreshRanks();
+  }
 }
 </script>

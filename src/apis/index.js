@@ -72,9 +72,17 @@ export const requestGetQuiz =
     });
 
 export const requestSolveQuiz =
-  ({ quizNo, choiceNo,  accessToken }) =>
+  ({ quizNo, choiceNo, accessToken }) =>
     post({
       url: `/quiz/${quizNo}/solve`,
       body: { choiceNo },
+      accessToken
+    });
+
+export const requestGlobalRank =
+  ({ accessToken }) =>
+    get({
+      url: `/rank/all`,
+      qs: {},
       accessToken
     });

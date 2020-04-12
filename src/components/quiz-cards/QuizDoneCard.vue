@@ -1,5 +1,8 @@
 <template>
   <v-card class="mx-auto card">
+    <v-card-title>
+      내 퀴즈 플레이 결과
+    </v-card-title>
     <v-card-text>
       <v-layout row wrap>
         <v-flex xs6>
