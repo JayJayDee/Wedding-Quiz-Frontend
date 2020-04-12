@@ -24,16 +24,10 @@
         </v-btn>
       </v-bottom-navigation>
     </v-footer>
-    <v-dialog v-model="dialog.show" persistent>
-      <v-card>
-        <v-card-title class="headline">{{dialog.title}}</v-card-title>
-        <v-card-text>{{dialog.text}}</v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialog.show = false">닫기</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+
+    <SimpleDialog />
+    <QuizResultDialog />
+
     <v-overlay :value="loading">
       <v-progress-circular indeterminate size="64"></v-progress-circular>
     </v-overlay>
@@ -43,7 +37,14 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 
+import SimpleDialog from '@/components/dialogs/SimpleDialog.vue';
+import QuizResultDialog from '@/components/dialogs/QuizResultDialog.vue';
+
 export default {
+  components: {
+    SimpleDialog,
+    QuizResultDialog
+  },
   computed: {
     ...mapState([ 'loading', 'dialog' ])
   },
