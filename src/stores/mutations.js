@@ -27,5 +27,9 @@ export const mutations = {
   putCurrentQuiz(state, { quiz, status }) {
     state.quiz.current = quiz;
     state.quiz.status = status;
+  },
+
+  putGlobalRanks(state, { ranks }) {
+    state.rank.global = ranks;
   }
 };
