@@ -38,7 +38,6 @@ export default {
     const self = this;
     this.$nextTick(function () {
       if (self.member) {
-        console.log('!');
         self.refreshQuiz();
       }
     });

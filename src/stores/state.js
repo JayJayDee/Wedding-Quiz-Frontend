@@ -3,9 +3,16 @@ export const state = {
   loading: false,
   loggedIn: false,
   dialog: {
-    show: false,
-    title: null,
-    text: null
+    simple: {
+      show: false,
+      title: null,
+      text: null
+    },
+    quizResult: {
+      show: false,
+      correct: true,
+      correctChoice: null
+    }
   },
   member: null,
   accessToken: null,

@@ -1,8 +1,8 @@
 <template>
-  <v-card class="mx-auto card">
+  <v-card class="mx-auto">
     <v-card-text v-if="quiz.current !== null">
       <div class="text--secondary">
-        {{currentSequence}} 문제
+        <h3>{{currentSequence}} 문제</h3>
       </div>
       <p class="headline">{{quiz.current.question}}</p>
     </v-card-text>

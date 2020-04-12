@@ -14,7 +14,7 @@ const waitLittle = (ms) =>
 
 const handleError = ({ commit, err }) => {
   if (err instanceof ApiError) {
-    commit('dialog', {
+    commit('simpleDialog', {
       show: true,
       title: '에러가 발생했습니다..',
       text: err.message
@@ -51,11 +51,24 @@ export const actions = {
     }
   },
 
-  showDialog({ commit }, { title, text }) {
-    commit('dialog', {
-      show: true,
-      title, text
-    });
+  showSimpleDialog({ commit }, { title, text }) {
+    const show = true;
+    commit('simpleDialog', { show, title, text });
+  },
+
+  hideSimpleDialog({ commit }) {
+    const show = false;
+    commit('simpleDialog', { show, title: '', text: '' });
+  },
+
+  showQuizResultDialog({ commit }, { correct, correctChoice }) {
+    const show = true;
+    commit('quizResultDialog', { show, correct, correctChoice });
+  },
+
+  hideQuizResultDialog({ commit }) {
+    const show = false;
+    commit('quizResultDialog', { show });
   },
 
   async registerMember({ commit }, member) {
@@ -100,21 +113,13 @@ export const actions = {
       const accessToken = state.accessToken;
 
       const { correct, choices } = await requestSolveQuiz({ quizNo, choiceNo, accessToken });
-      
-      if (correct === true) {
-        commit('dialog', {
-          show: true,
-          title: '정답입니다!',
-          text: `정답은 ${choices.correct.choiceText} 이었습니다!`
-        });
-      } else {
-        commit('dialog', {
-          show: true,
-          title: '오답입니다...',
-          text: `정답은 ${choices.correct.choiceText} 이었습니다!`
-        });
-      }
 
+      commit('quizResultDialog', {
+        show: true,
+        correct,
+        correctChoice: choices.correct
+      });
+      
     } catch (err) {
       handleError({ commit, err });
     } finally {

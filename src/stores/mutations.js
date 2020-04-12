@@ -4,8 +4,14 @@ export const mutations = {
     state.loading = loading;
   },
 
-  dialog(state, dialog) {
-    state.dialog = dialog;
+  simpleDialog(state, dialog) {
+    state.dialog.simple = dialog;
+  },
+
+  quizResultDialog(state, { show, correct, correctChoice }) {
+    state.dialog.quizResult = {
+      show, correct, correctChoice
+    };
   },
 
   putAccessToken(state, accessToken) {
