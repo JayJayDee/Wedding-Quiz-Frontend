@@ -30,11 +30,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions([ 'registerMember', 'showDialog' ]),
+    ...mapActions([ 'registerMember', 'showSimpleDialog' ]),
     async onClickRegister() {
       if (this.name.trim().length === 0 ||
           this.phone.trim().length === 0) {
-        this.showDialog({
+        this.showSimpleDialog({
           title: '죄송합니다.',
           text: `이름과 전화번호를 입력해주셔야 퀴즈에 응모 가능합니다.
                 입력하신 이름과 전화번호를 다시 한번 확인해주세요.`
