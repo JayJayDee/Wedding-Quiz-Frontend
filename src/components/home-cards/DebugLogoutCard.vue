@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto">
+  <v-card class="mx-auto" v-if="0 === 1">
     <v-card-title>
       디버그용 로그아웃 버튼
     </v-card-title>
